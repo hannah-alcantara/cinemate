@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "La La Land",
+    "release_date": "2016",
+    "overview": "Mia, an aspiring actress, serves lattes to movie stars in between auditions and Sebastian, a jazz musician, scrapes by playing cocktail party gigs in dingy bars, but as success mounts they are faced with decisions that begin to fray the fragile fabric of their love affair, and the dreams they worked so hard to maintain in each other threaten to rip them apart.",
+    "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original/nxsqOOMFfz7mWW8JLmpcLjNz7E2.jpg"
+  },
+  {
+    "id": 2,
+    "title": "About Time",
+    "release_date": "2013",
+    "overview": "The night after another unsatisfactory New Year's party, Tim's father tells his son that the men in his family have always had the ability to travel through time. They can't change history, but they can change what happens and has happened in their own lives. Thus begins the start of a lesson in learning to appreciate life itself as it is, as it comes, and most importantly, the people living alongside us.",
+    "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/iR1bVfURbN7r1C46WHFbwCkVve.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original/ppWSi3evUtz9YGNcmsnjmH3FARy.jpg"
+  },
+  {
+    "id": 3,
+    "title": "50 First Dates",
+    "release_date": "2004",
+    "overview": "Henry is a player skilled at seducing women. But when this veterinarian meets Lucy, a girl with a quirky problem when it comes to total recall, he realizes it's possible to fall in love all over again…and again, and again. That's because the delightful Lucy has no short-term memory, so Henry must woo her day after day until he finally sweeps her off her feet.",
+    "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/5NxTW4SS6aUKZYnbQzh7UYNivd.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original/7qciJF7sQaCSYFVpxykEwyStKOl.jpg"
+  },
+  {
+    "id": 4,
+    "title": "The Devil Wears Prada",
+    "release_date": "2006",
+    "overview": "Andy moves to New York to work in the fashion industry. Her boss is extremely demanding, cruel and won't let her succeed if she doesn't fit into the high class elegant look of their magazine.",
+    "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8912AsVuS7Sj915apArUFbv6F9L.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original/dbkQvzmbSnKtN4piHvdIkydFCGe.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Mean Girls",
+    "release_date": "2004",
+    "overview": "Cady Heron is a hit with The Plastics, the A-list girl clique at her new school, until she makes the mistake of falling for Aaron Samuels, the ex-boyfriend of alpha Plastic Regina George.",
+    "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/alKvY5LuVcXraRBfi5UtVV8Ii6Y.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original/nP3y0TkR6XniFs9J53qQkg4Bnnk.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Interstellar",
+    "release_date": "2014",
+    "overview": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+    "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original/5C3RriLKkIAQtQMx85JLtu4rVI2.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Warm Bodies",
+    "release_date": "2013",
+    "overview": "After a zombie becomes involved with the girlfriend of one of his victims, their romance sets in motion a sequence of events that might transform the entire lifeless world.",
+    "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8XAX6KaqNGcLXcwoDwxyU0bxhxm.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original/eCiELR7UGKHEg5uc3BSQzSJnxpU.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Barbie",
+    "release_date": "2023",
+    "overview": "Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the joys and perils of living among humans.",
+    "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original/3N5QNUqS76GFYNoEayfkkJyAyTN.jpg"
+  },
+  {
+    "id": 9,
+    "title": "The Princess Diaries 2: Royal Engagement",
+    "release_date": "2004",
+    "overview": "Mia Thermopolis is now a college graduate and on her way to Genovia to take up her duties as princess. Her best friend Lilly also joins her for the summer. Mia continues her 'princess lessons'- riding horses side-saddle, archery, and other royal. But her complicated life is turned upside down once again when she not only learns that she is to take the crown as queen earlier than expected...",
+    "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/5XToqGcE4qdfOSaCPWI7kAb1bm7.jpg",
+    "backdrop_path": "https://image.tmdb.org/t/p/original/t3jTp49Yj0hDN5lghwD90M24Frs.jpg"
+  }
+]

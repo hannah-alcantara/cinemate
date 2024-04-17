@@ -1,11 +1,17 @@
 import "./App.css";
+import { Navigation } from "./components/Navigation";
+import { Carousel } from "./components/Carousel";
+import { NewMoviesList } from "./components/NewMoviesList";
+import { PopularMoviesList } from "./components/PopularMoviesList";
+import TopRatedMoviesList from "./components/TopRatedMoviesList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      </header>
+    <div>
+      <Navigation />
+      <Carousel />
+      <PopularMoviesList />
+      <PopularMoviesList />
     </div>
   );
 }
