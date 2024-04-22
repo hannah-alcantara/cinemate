@@ -8,37 +8,28 @@ import {
 export function Navigation() {
   return (
     // TODO: Fix space-between offset
-    <header className="p-4">
+    <header className="p-6 pb-0 bg-black">
       <nav>
-        <ul className="flex justify-between items-center mx-3">
+        <ul className="flex justify-between items-center">
           <li>
             <a href="#">
-              <FontAwesomeIcon className="text-slate-100" icon={faBars} />
+              <FontAwesomeIcon icon={faBars} />
             </a>
           </li>
           <li>
-            <a
-              href="/"
-              className="text-xl font-bold text-slate-100 pl-3 font-oswald"
-            >
+            <a href="/" className="text-xl font-bold  pl-3 font-oswald">
               CINEMATE
             </a>
           </li>
           <div className="flex">
             <li className="pr-3">
               <a href="#">
-                <FontAwesomeIcon
-                  className="text-slate-100"
-                  icon={faCircleUser}
-                />
+                <FontAwesomeIcon icon={faCircleUser} />
               </a>
             </li>
             <li>
               <a href="#">
-                <FontAwesomeIcon
-                  className="text-slate-100"
-                  icon={faMagnifyingGlass}
-                />
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
               </a>
             </li>
           </div>

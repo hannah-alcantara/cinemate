@@ -2,19 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @layer utilities {
-  .striped div:nth-child(even) {
-    @apply bg-white text-black;
-  }
-} */
-@layer utilities {
-  .font-condensed {
-    font-stretch: condensed;
-  }
-}
-
 body {
   margin: 0;
-  background-color: #000000;
   color: white;
+  background-color: #252422;
 }

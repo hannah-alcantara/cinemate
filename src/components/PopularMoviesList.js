@@ -8,32 +8,29 @@ import {
 export function PopularMoviesList() {
   return (
     //ADD: Filter
-    <div className="p-6 bg-m-grey">
-      <div class="flex items-center pb-6">
-        <h2 class="font-oswald font-bold text-lg text-white">Popular</h2>
-      </div>
-      <div className="grid grid-flow-col auto-cols-[36%] gap-4 overflow-x-auto overscroll-x-contain">
+    <section className="p-8 pb-0">
+      <h2 className="font-oswald font-medium text-2xl uppercase mb-8">
+        Popular
+      </h2>
+      <div className="grid grid-flow-col auto-cols-[34%] gap-5 overflow-x-auto overscroll-x-contain">
         {/* <FontAwesomeIcon icon={faCircleArrowLeft} /> */}
-        {Movies.map((movie) => {
-          return (
-            <div className="">
-              <a href="#">
-                <img
-                  src={movie.poster_path}
-                  alt="Poster"
-                  className="border border-slate-700"
-                />
-              </a>
-              <a className="font-courier font-bold text-sm inline-block my-2">
-                {movie.title}
-              </a>
-              <p className="font-source text-xs"> {movie.release_date}</p>
-            </div>
-          );
-        })}
+        {Movies.map((movie) => (
+          <div>
+            <a href="#">
+              <img
+                src={movie.poster_path}
+                alt="Poster"
+                className="shadow-2xl border border-gray-800 rounded-sm"
+              />
+            </a>
+            <a className="inline-block font-medium mt-3 mb-1">{movie.title}</a>
+            <p className="font-courier text-xs">{movie.release_date}</p>
+          </div>
+        ))}
+
         {/* <FontAwesomeIcon icon={faCircleArrowRight} /> */}
       </div>
-    </div>
+    </section>
   );
 }
 

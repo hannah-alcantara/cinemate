@@ -2,25 +2,26 @@ import Movies from "../movies.json";
 
 export function Carousel() {
   return (
-    <div className="relative grid grid-cols-3 gap-3 m-4 pb-4">
-      {Movies.map((movie) => {
-        return (
-          <div>
-            <img
-              src={movie.backdrop_path}
-              alt="Backdrop"
-              className="grayscale hover:grayscale-0 duration-500"
-            />
-          </div>
-        );
-      })}
-      <span className="bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <h1 className="font-courier text-white font-bold whitespace-nowrap p-2 text-sm">
-          {/* Where every frame tells a story. */}
-          Your Personal Collection of Cinematic Masterpieces.
-        </h1>
-      </span>
-    </div>
+    <section className="bg-black">
+      <div className="relative grid grid-cols-3 gap-3 p-6 bg-black">
+        {Movies.map((movie) => {
+          return (
+            <div>
+              <img
+                src={movie.backdrop_path}
+                alt="Backdrop"
+                className="grayscale hover:grayscale-0 duration-500"
+              />
+            </div>
+          );
+        })}
+        <span className="bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <h1 className="font-courier font-medium whitespace-nowrap p-2 text-sm">
+            Your Personal Collection of Cinematic Masterpieces.
+          </h1>
+        </span>
+      </div>
+    </section>
   );
 }
 
