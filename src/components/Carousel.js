@@ -16,7 +16,7 @@ export function Carousel() {
           );
         })}
         <span className="bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <h1 className="font-courier font-medium whitespace-nowrap p-2 text-sm">
+          <h1 className="font-courier font-medium whitespace-nowrap text-xs p-2">
             Your Personal Collection of Cinematic Masterpieces.
           </h1>
         </span>
