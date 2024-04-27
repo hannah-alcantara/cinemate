@@ -4,7 +4,7 @@ import {
   faAngleRight,
   faHeart,
   faEye,
-  faCirclePlus,
+  faBookmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { MovieDetail } from "./MovieDetail";
 import { Link } from "react-router-dom";
@@ -30,7 +30,7 @@ export function PopularMoviesList() {
                 <div className="absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex">
                   <FontAwesomeIcon icon={faEye} />
                   <FontAwesomeIcon icon={faHeart} className="mx-2" />
-                  <FontAwesomeIcon icon={faCirclePlus} />
+                  <FontAwesomeIcon icon={faBookmark} />
                 </div> */}
                 <img
                   src={movie.poster_path}

@@ -7,7 +7,7 @@ import { PopularMoviesList } from "./components/PopularMoviesList";
 import { TopRatedMoviesList } from "./components/TopRatedMoviesList";
 import { Footer } from "./components/Footer";
 import { UpcomingMoviesList } from "./components/UpcomingMoviesList";
-import { MovieDetail } from "./components/MovieDetail.1";
+import { MovieDetail } from "./components/MovieDetail";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <MovieDetail /> */}
       <Router>
         <Navigation />
-        <Carousel />
+        {/* <Carousel />
         <Routes>
           <Route path="/details" element={<MovieDetail />} />
           <Route path="/" element={<PopularMoviesList />} />
@@ -24,7 +24,7 @@ function App() {
         <NowPlayingMoviesList />
         <UpcomingMoviesList />
         <TopRatedMoviesList />
-        <Footer />
+        <Footer /> */}
       </Router>
     </div>
   );
