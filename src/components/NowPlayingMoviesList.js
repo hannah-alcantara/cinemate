@@ -1,9 +1,19 @@
 import Movies from "../movies.json";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 export function NowPlayingMoviesList() {
   return (
-    <div className="p-8">
-      <h2 className="font-oswald font-medium text-2xl">NOW PLAYING</h2>
+    <section className="p-8">
+      <div className="flex items-center">
+        <h2 className="font-oswald font-medium text-2xl uppercase">
+          Now Playing
+        </h2>
+        <FontAwesomeIcon
+          icon={faAngleRight}
+          className="text-lg ml-2 text-gray-200"
+        />
+      </div>
       {Movies.map((movie) => {
         return (
           <div className="relative overflow-hidden my-8">
@@ -29,6 +39,6 @@ export function NowPlayingMoviesList() {
           </div>
         );
       })}
-    </div>
+    </section>
   );
 }

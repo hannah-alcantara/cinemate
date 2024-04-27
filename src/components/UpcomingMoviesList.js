@@ -1,11 +1,20 @@
 import Movies from "../movies.json";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 export function UpcomingMoviesList() {
   return (
-    <div className="bg-black p-8">
-      <h2 className="font-oswald font-medium text-2xl mb-8 uppercase">
-        Coming Soon
-      </h2>
+    <section className="bg-black p-8">
+      <div className="flex items-center mb-8">
+        <h2 className="font-oswald font-medium text-2xl uppercase">
+          Coming Soon
+        </h2>
+        <FontAwesomeIcon
+          icon={faAngleRight}
+          className="text-lg ml-2 text-gray-200"
+        />
+      </div>
+
       <div className="grid grid-flow-col auto-cols-[76%] gap-5 overflow-x-auto overscroll-x-contain">
         {Movies.map((movie) => {
           return (
@@ -31,6 +40,6 @@ export function UpcomingMoviesList() {
           );
         })}
       </div>
-    </div>
+    </section>
   );
 }

@@ -3,7 +3,7 @@ import Movies from "../movies.json";
 export function Carousel() {
   return (
     <section className="bg-black">
-      <div className="relative grid grid-cols-3 gap-3 p-6 bg-black">
+      <div className="relative grid grid-cols-3 gap-3 p-6 pt-0 bg-black">
         {Movies.map((movie) => {
           return (
             <div>
@@ -17,7 +17,7 @@ export function Carousel() {
         })}
         <span className="bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <h1 className="font-courier font-medium whitespace-nowrap text-xs p-2">
-            Your Personal Collection of Cinematic Masterpieces.
+            Your Personal Collection of Cinematic Masterpieces
           </h1>
         </span>
       </div>
