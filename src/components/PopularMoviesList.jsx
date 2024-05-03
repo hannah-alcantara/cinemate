@@ -14,7 +14,12 @@ export function PopularMoviesList() {
     //ADD: Filter
     <section className="p-8">
       <div className="flex items-center">
-        <h2 className="font-oswald font-medium text-2xl uppercase">Popular</h2>
+        <Link
+          to="/details"
+          className="font-oswald font-medium text-2xl uppercase"
+        >
+          Popular
+        </Link>
         <FontAwesomeIcon
           icon={faAngleRight}
           className="text-lg ml-2 text-gray-200"

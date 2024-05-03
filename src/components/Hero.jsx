@@ -1,6 +1,6 @@
 import Movies from "../movies.json";
 
-export function Carousel() {
+export function Hero() {
   return (
     <section className="bg-black">
       <div className="relative grid grid-cols-3 gap-3 p-6 pt-0 bg-black">
