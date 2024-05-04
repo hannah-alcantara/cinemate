@@ -1,36 +1,17 @@
-import Movies from "../movies.json";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleRight,
-  faHeart,
-  faEye,
-  faBookmark,
-} from "@fortawesome/free-solid-svg-icons";
-import { MovieDetail } from "./MovieDetail";
 import { Link } from "react-router-dom";
+import Movies from "../movies.json";
+import { Title } from "./Title";
 
-export function PopularMoviesList() {
+export function NowPlayingList() {
   return (
-    //ADD: Filter
-    <section className="p-8">
-      <div className="flex items-center">
-        <Link
-          to="/details"
-          className="font-oswald font-medium text-2xl uppercase"
-        >
-          Popular
-        </Link>
-        <FontAwesomeIcon
-          icon={faAngleRight}
-          className="text-lg ml-2 text-gray-200"
-        />
-      </div>
-      <div className="grid grid-flow-col auto-cols-[34%] gap-5 overflow-x-auto overscroll-x-contain mt-8">
+    <section className='p-8'>
+      <Title to='/nowplaying' text='In Theaters' />
+      <div className='grid grid-flow-col auto-cols-[34%] gap-5 overflow-x-auto overscroll-x-contain mt-8'>
         {/* <FontAwesomeIcon icon={faCircleArrowLeft} /> */}
         {Movies.map((movie) => (
-          <li className="list-none">
-            <div className="relative">
-              <a to="/details">
+          <li className='list-none'>
+            <div className='relative'>
+              <Link to='/details'>
                 {/* //Only for Desktop
                 <div className="absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex">
                   <FontAwesomeIcon icon={faEye} />
@@ -39,13 +20,13 @@ export function PopularMoviesList() {
                 </div> */}
                 <img
                   src={movie.poster_path}
-                  alt="Poster"
-                  className="shadow-2xl border border-gray-800 rounded-sm"
+                  alt='Poster'
+                  className='shadow-inner border border-gray-800 rounded-sm'
                 />
-              </a>
+              </Link>
             </div>
-            <a className="inline-block font-medium mt-3 mb-1">{movie.title}</a>
-            <p className="font-courier text-xs">{movie.release_date}</p>
+            <a className='inline-block font-medium mt-3 mb-1'>{movie.title}</a>
+            <p className='font-courier text-xs'>{movie.release_date}</p>
           </li>
         ))}
 

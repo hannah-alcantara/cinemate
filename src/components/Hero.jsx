@@ -1,22 +1,25 @@
 import Movies from "../movies.json";
+import { Link } from "react-router-dom";
 
 export function Hero() {
   return (
-    <section className="bg-black">
-      <div className="relative grid grid-cols-3 gap-3 p-6 pt-0 bg-black">
+    <section className='bg-black'>
+      <div className='relative grid grid-cols-3 gap-3 p-6 pt-0 bg-black'>
         {Movies.map((movie) => {
           return (
-            <div>
-              <img
-                src={movie.backdrop_path}
-                alt="Backdrop"
-                className="grayscale hover:grayscale-0 duration-500"
-              />
+            <div key={movie}>
+              <Link to={`/movie/${movie.id}`}>
+                <img
+                  src={movie.backdrop_path}
+                  alt='Backdrop'
+                  className='grayscale hover:grayscale-0 duration-500'
+                />
+              </Link>
             </div>
           );
         })}
-        <span className="bg-black absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <h1 className="font-courier font-medium whitespace-nowrap text-xs p-2">
+        <span className='bg-black absolute top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+          <h1 className='font-courier font-medium whitespace-nowrap text-xs p-2'>
             Your Personal Collection of Cinematic Masterpieces
           </h1>
         </span>
