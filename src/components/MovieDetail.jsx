@@ -1,15 +1,7 @@
 import Movies from "../movies.json";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleRight,
-  faHeart,
-  faEye,
-  faBookmark,
-} from "@fortawesome/free-solid-svg-icons";
-
 export function MovieDetail() {
   return (
-    <section className='bg-indigo-900 h-screen'>
+    <section className='bg-indigo-900 h-[34rem]'>
       <div>
         <div className='absolute w-full h-96 bg-gradient-to-t from-indigo-900'></div>
         <img
@@ -56,42 +48,29 @@ export function MovieDetail() {
               </p>
               <div>
                 <div className='flex'>
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    className='text-[10px] bg-black p-2 rounded-2xl'
-                  />
-                  <FontAwesomeIcon
-                    icon={faHeart}
-                    className='mx-2 text-[10px] bg-black p-2 rounded-2xl'
-                  />
-                  <FontAwesomeIcon
-                    icon={faBookmark}
-                    className='text-[10px] bg-black p-2 rounded-2xl'
-                  />
+                  <i className='fas fa-eye text-[10px] bg-black p-2 rounded-2xl' />
+                  <i className='fas fa-heart mx-2 text-[10px] bg-black p-2 rounded-2xl' />
+                  <i className='fas fa-bookmark text-[10px] bg-black p-2 rounded-2xl' />
                 </div>
               </div>
             </div>
           </div>
           <hr className='my-5' />
-          <div className='px-2'>
-            <ul>
-              <li className='my-2'>
-                <h2 className='text-xs'>
-                  Director by:{" "}
-                  <span className='font-courier uppercase'>
-                    Damien Chazelle
-                  </span>
-                </h2>
-              </li>
-              <li className='my-2'>
-                <h2 className='text-xs'>
-                  Written by:{" "}
-                  <span className='font-courier uppercase'>
-                    Damien Chazelle
-                  </span>
-                </h2>
-              </li>
-            </ul>
+          <div>
+            <table className='table-auto w-64'>
+              <tr className='text-xs'>
+                <td>Directed by:</td>
+                <td className='font-courier'>Damien Chazelle</td>
+              </tr>
+              <tr className='text-xs'>
+                <td>Written by:</td>
+                <td className='font-courier '>Damien Chazelle</td>
+              </tr>
+              <tr className='text-xs'>
+                <td>Cast:</td>
+                <td className='font-courier '>Ryan Gosling, Emma Stone</td>
+              </tr>
+            </table>
           </div>
           <hr className='my-5' />
         </div>

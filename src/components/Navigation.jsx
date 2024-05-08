@@ -1,59 +1,49 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faBars,
-  faMagnifyingGlass,
-  faCircleUser,
-} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import { Logo } from "../components/Logo";
 
-export function Navigation() {
+const NavLinks = () => {
+  return (
+    <>
+      <NavLink to='/nowplaying'>Now Playing</NavLink>
+      <NavLink to='/comingsoon'>Coming Soon</NavLink>
+      <NavLink to='/popular'>Popular</NavLink>
+      <NavLink to='/toprated'>Top Rated</NavLink>
+      <NavLink to='/watchlist'>Watchlist</NavLink>
+    </>
+  );
+};
+
+const Navigation = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleUser, setToggleUser] = useState(false);
   const [toggleSearch, setToggleSearch] = useState(false);
+
+  const handleToggle = () => setToggleMenu(!toggleMenu);
 
   return (
     <nav className='bg-black p-6'>
       <div className='flex justify-between items-center'>
         {/* Menu Icon */}
         <div className='w-1/3'>
-          <button onClick={() => setToggleMenu(!toggleMenu)}>
-            <FontAwesomeIcon icon={faBars} />
+          <button onClick={handleToggle}>
+            <i className={toggleMenu ? "fas fa-times" : "fas fa-bars"} />
           </button>
           {toggleMenu && (
             <div className='absolute top-16 left-0 z-50 p-6 h-2/4 w-10/12 backdrop-blur-lg bg-black bg-opacity-80 shadow-2xl'>
-              <ul className='list-none text-left font-courier font-bold'>
-                <Link to='/nowplaying'>
-                  <li className='pb-4'>Now Playing</li>
-                </Link>
-                <Link to='/comingsoon'>
-                  <li className='pb-4'>Coming Soon</li>
-                </Link>
-                <Link to='/popular'>
-                  <li className='pb-4'>Popular</li>
-                </Link>
-                <Link to='/toprated'>
-                  <li className='pb-4'>Top Rated</li>
-                </Link>
-                <Link to='/watchlist'>
-                  <li className='pb-4'>Watchlist</li>
-                </Link>
+              <ul className='list-none text-left font-courier font-bold flex flex-col'>
+                <NavLinks />
               </ul>
             </div>
           )}
         </div>
 
-        {/* Logo */}
-        <div className='w-1/3 flex justify-center'>
-          <a href='/' className='text-2xl font-bold font-oswald '>
-            CINEMATE
-          </a>
-        </div>
+        <Logo />
 
         {/* User and Search Icon */}
         <div className='w-1/3 flex justify-end'>
           <button onClick={() => setToggleUser(!toggleUser)}>
-            <FontAwesomeIcon icon={faCircleUser} className='mr-4' />
+            <i className='fa-solid fa-circle-user mr-4' />
           </button>
           {toggleUser && (
             <div className='absolute top-16 right-12 z-10 p-6 h-46 w-52 backdrop-blur-lg bg-black bg-opacity-80 shadow-2xl'>
@@ -84,7 +74,7 @@ export function Navigation() {
 
           {/* Mobile Search */}
           <button onClick={() => setToggleSearch(!toggleSearch)}>
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <i className='fas fa-magnifying-glass' />
           </button>
           {toggleSearch && (
             <div className='absolute top-16 left-0 z-10 backdrop-blur-lg bg-black bg-opacity-80 h-18 p-6 w-full drop-shadow-2xl'>
@@ -94,10 +84,7 @@ export function Navigation() {
                 className='h-10 w-full pl-10 text-md font-courier text-gray-900 border border-gray focus:outline-none'
               />
               <span className='absolute left-9 top-8'>
-                <FontAwesomeIcon
-                  icon={faMagnifyingGlass}
-                  className='text-gray-400 text-sm'
-                />
+                <i className='fas fa-magnifying-glass text-gray-400 text-sm' />
               </span>
             </div>
           )}
@@ -105,4 +92,6 @@ export function Navigation() {
       </div>
     </nav>
   );
-}
+};
+
+export default Navigation;

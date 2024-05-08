@@ -1,6 +1,4 @@
 import Movies from "../movies.json";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Title } from "./Title";
 
 export function ComingSoonList() {

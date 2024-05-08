@@ -1,23 +1,11 @@
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Movies from "../movies.json";
+import { Title } from "./Title";
 
 export function PopularList() {
   return (
     <section className='p-8'>
-      <div className='flex items-center'>
-        <Link
-          to='/popular'
-          className='font-oswald font-medium text-2xl uppercase'
-        >
-          Popular
-          <FontAwesomeIcon
-            icon={faAngleRight}
-            className='text-lg ml-2 text-gray-200'
-          />
-        </Link>
-      </div>
+      <Title to='/popular' text='Popular' />
       {Movies.map((movie) => {
         return (
           <div className='relative overflow-hidden my-8'>

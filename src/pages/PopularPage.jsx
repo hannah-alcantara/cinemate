@@ -1,7 +1,5 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Footer } from "../components/Footer";
-import { Navigation } from "../components/Navigation";
+import Navigation from "../components/Navigation";
 import { MovieGrid } from "../components/MovieGrid";
 
 export function PopularPage() {
@@ -15,10 +13,7 @@ export function PopularPage() {
         {/* Search bar */}
         <div className='relative mt-6 mb-12'>
           <div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
-            <FontAwesomeIcon
-              icon={faMagnifyingGlass}
-              className='text-gray-400 text-sm'
-            />
+            <i className='fa fa-magnifying-glass fa-text-gray-400 text-sm' />
           </div>
           <input
             type='text'
