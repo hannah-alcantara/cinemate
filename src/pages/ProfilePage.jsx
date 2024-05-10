@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export function ProfilePage() {
   const profiles = [1, 2, 3, 4, 5];

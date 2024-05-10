@@ -6,6 +6,7 @@ export const menuItemsData = [
   {
     title: "Films",
     url: "/films",
+    icon: "fas fa-bars",
     submenu: [
       {
         title: "Now Playing",

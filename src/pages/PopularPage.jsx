@@ -5,7 +5,6 @@ import { MovieGrid } from "../components/MovieGrid";
 export function PopularPage() {
   return (
     <div>
-      <Navigation />
       <section className='p-8 bg-white'>
         <h2 className='flex items-center font-oswald font-medium text-2xl uppercase text-black'>
           Popular Films

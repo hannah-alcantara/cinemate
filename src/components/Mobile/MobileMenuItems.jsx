@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import Dropdown from "./Dropdown";
+import MobileDropdown from "./MobileDropdown";
 import { Link } from "react-router-dom";
 
-const MenuItems = ({ items}) => {
+const MobileMenuItems = ({ items}) => {
   const [dropdown, setDropdown] = useState(false);
 
   let ref = useRef();
@@ -13,28 +13,19 @@ const MenuItems = ({ items}) => {
         setDropdown(false);
       }
     };
-    document.addEventListener("mousedown", handler);
     document.addEventListener("touchstart", handler);
     return () => {
-      document.removeEventListener("mousedown", handler);
       document.removeEventListener("touchstart", handler);
     };
   }, [dropdown]);
 
-  const onMouseEnter = () => {
-    setDropdown(true);
-  };
-
-  const onMouseLeave = () => {
-    setDropdown(false);
-  };
 
   return (
+
+    //fix:hide menus that do not have icon
     <li
-      className='px-4 py-3 hover:text-gray-400 text-md'
+      className='flex justify-between items-center px-6'
       ref={ref}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
     >
       {items.submenu ? (
         <>
@@ -42,13 +33,12 @@ const MenuItems = ({ items}) => {
             aria-expanded={dropdown ? "true" : "false"}
             onClick={() => setDropdown((prev) => !prev)}
           >
-            {items.title}
+          <i className={items.icon}></i>
           </button>
-          <Dropdown submenus={items.submenu} dropdown={dropdown} />
+          <MobileDropdown submenus={items.submenu} dropdown={dropdown} />
         </>
       ) : (
         <Link to={items.url}>
-          {items.title}
           <i className={items.icon}></i>
         </Link>
       )}
@@ -56,4 +46,4 @@ const MenuItems = ({ items}) => {
   );
 };
 
-export default MenuItems;
+export default MobileMenuItems;

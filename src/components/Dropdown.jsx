@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Dropdown = ({ submenus, dropdown }) => {
   return (
     <ul
@@ -8,7 +10,7 @@ const Dropdown = ({ submenus, dropdown }) => {
     >
       {submenus.map((submenu, index) => (
         <li key={index} className='block hover:bg-black px-4 py-2'>
-          <a href={submenu.url}>{submenu.title}</a>
+          <Link href={submenu.url}>{submenu.title}</Link>
         </li>
       ))}
     </ul>

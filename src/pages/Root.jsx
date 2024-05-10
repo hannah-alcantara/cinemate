@@ -5,7 +5,7 @@ export function Root() {
   return (
     <div>
       <Header />
-      <div className='p-8'>
+      <div>
         <Outlet />
       </div>
     </div>
