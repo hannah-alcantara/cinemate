@@ -1,7 +1,7 @@
 import Movies from "../movies.json";
 import { Link } from "react-router-dom";
 
-export function MovieGrid() {
+const MovieGrid = () => {
   return (
     <div className='my-8'>
       <ul className='grid grid-rows-3 grid-flow-col gap-4'>
@@ -19,4 +19,6 @@ export function MovieGrid() {
       </ul>
     </div>
   );
-}
+};
+
+export default MovieGrid;

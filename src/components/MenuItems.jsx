@@ -2,8 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import Dropdown from "./Dropdown";
 import { Link } from "react-router-dom";
 
-const MenuItems = ({ items}) => {
+const MenuItems = ({ items }) => {
   const [dropdown, setDropdown] = useState(false);
+
+  //did not add closeDropdown function yet
 
   let ref = useRef();
 

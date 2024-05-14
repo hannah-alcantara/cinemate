@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function Title({ text, to }) {
+const Title = ({ text, to }) => {
   return (
     <div className='max-w-fit'>
       <Link to={to} className='font-oswald font-medium text-2xl uppercase'>
@@ -11,4 +11,6 @@ export function Title({ text, to }) {
       </Link>
     </div>
   );
-}
+};
+
+export default Title;

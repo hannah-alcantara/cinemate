@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Movies from "../movies.json";
-import { Title } from "./Title";
+import Title from "./Title";
 
 export function PopularList() {
   return (

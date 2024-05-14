@@ -1,5 +1,5 @@
 import Movies from "../movies.json";
-import { Title } from "./Title";
+import Title from "./Title";
 
 export function ComingSoonList() {
   return (

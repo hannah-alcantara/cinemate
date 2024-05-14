@@ -1,6 +1,6 @@
 import { Footer } from "../components/Footer";
 import Navigation from "../components/Navigation";
-import { MovieGrid } from "../components/MovieGrid";
+import MovieGrid from "../components/MovieGrid";
 
 export function PopularPage() {
   return (

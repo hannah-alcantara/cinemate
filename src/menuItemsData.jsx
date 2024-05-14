@@ -1,9 +1,5 @@
 export const menuItemsData = [
   {
-    title: "Home",
-    url: "/",
-  },
-  {
     title: "Films",
     url: "/films",
     icon: "fas fa-bars",
@@ -31,13 +27,11 @@ export const menuItemsData = [
     url: "lists",
   },
   {
-    title: " ",
-    url: "user",
-    icon: "fas fa-magnifying-glass",
+    url: "profile",
+    icon: "fas fa-circle-user",
   },
   {
-    title: " ",
-    url: "add",
-    icon: "fas fa-add",
+    url: "search",
+    icon: "fas fa-magnifying-glass",
   },
 ];
