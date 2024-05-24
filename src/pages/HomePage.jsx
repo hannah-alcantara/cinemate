@@ -5,17 +5,7 @@ import { PopularList } from "../components/PopularList";
 import { ComingSoonList } from "../components/ComingSoonList";
 import { TopRatedMoviesList } from "../components/TopRatedMoviesList";
 import { Footer } from "../components/Footer";
-import Header from "../components/Header";
+import Header from "../components/Navigation/Header";
 export function HomePage() {
-  return (
-    <div>
-      {/*
-      <Hero />
-      <NowPlayingList />
-      <ComingSoonList />
-      <PopularList />
-      <TopRatedMoviesList />
-      <Footer /> */}
-    </div>
-  );
+  return <div></div>;
 }

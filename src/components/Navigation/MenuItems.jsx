@@ -1,28 +1,31 @@
-import { useState, useEffect, useRef } from "react";
+import { NavLink } from "react-router-dom";
 import Dropdown from "./Dropdown";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 
-const MenuItems = ({ items }) => {
+const MenuItems = ({ title, url, submenu }) => {
   const [dropdown, setDropdown] = useState(false);
-
-  //did not add closeDropdown function yet
 
   let ref = useRef();
 
+  //This handler closes the dropdown when users click outside of it
+  // check if a dropdown is open and then check if the DOM node that
+  // is being clicked is outside of the dropdown. Then, we close the dropdown.
   useEffect(() => {
-    const handler = (e) => {
-      if (dropdown && ref.current && !ref.current.contains(e.target)) {
+    const handler = (event) => {
+      if (dropdown && ref.current && !ref.current.contains(event.target)) {
         setDropdown(false);
       }
     };
     document.addEventListener("mousedown", handler);
     document.addEventListener("touchstart", handler);
     return () => {
+      // Cleanup the event listener
       document.removeEventListener("mousedown", handler);
       document.removeEventListener("touchstart", handler);
     };
   }, [dropdown]);
 
+  //this function toggles the dropdown on mouse hover
   const onMouseEnter = () => {
     setDropdown(true);
   };
@@ -33,26 +36,27 @@ const MenuItems = ({ items }) => {
 
   return (
     <li
-      className='px-4 py-3 hover:text-gray-400 text-md'
+      className='mx-3'
       ref={ref}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      {items.submenu ? (
+      {/* Dropdown */}
+      {submenu ? (
         <>
           <button
+            type='button'
+            aria-label='Toggle dropdown'
+            aria-haspopup='menu'
             aria-expanded={dropdown ? "true" : "false"}
             onClick={() => setDropdown((prev) => !prev)}
           >
-            {items.title}
+            {title}
           </button>
-          <Dropdown submenus={items.submenu} dropdown={dropdown} />
+          <Dropdown submenu={submenu} dropdown={dropdown} />
         </>
       ) : (
-        <Link to={items.url}>
-          {items.title}
-          <i className={items.icon}></i>
-        </Link>
+        <NavLink to={url}>{title}</NavLink>
       )}
     </li>
   );
