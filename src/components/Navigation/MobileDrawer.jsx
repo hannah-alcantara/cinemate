@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MobileDrawer = ({ isDrawerOpen, setIsDrawerOpen }) => {
   return (
-    <div className='fixed'>
+    <div className='fixed z-50'>
       {/* blurs backgroud when drawer is open */}
       {isDrawerOpen && (
         <div

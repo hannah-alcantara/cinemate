@@ -18,13 +18,13 @@ export function MovieDetail() {
               alt='Poster'
             />
             <div className='pl-4'>
-              <h1 className='text-2xl font-bold font-oswald uppercase'>
+              <h1 className='text-2xl font-bold font-oswald uppercase text-white'>
                 La La Land
                 <span className='text-xs font-courier text-gray-200'>
                   &nbsp;2016
                 </span>
               </h1>
-              <div className='grid grid-flow-col gap-2 my-3'>
+              <div className='grid grid-flow-col gap-2 my-3 text-white'>
                 <button className='font-courier uppercase text-[10px] bg-black p-1 rounded'>
                   Music
                 </button>
@@ -47,7 +47,7 @@ export function MovieDetail() {
                 to maintain in each other threaten to rip them apart.
               </p>
               <div>
-                <div className='flex'>
+                <div className='flex text-white'>
                   <i className='fas fa-eye text-[10px] bg-black p-2 rounded-2xl' />
                   <i className='fas fa-heart mx-2 text-[10px] bg-black p-2 rounded-2xl' />
                   <i className='fas fa-bookmark text-[10px] bg-black p-2 rounded-2xl' />
@@ -56,7 +56,7 @@ export function MovieDetail() {
             </div>
           </div>
           <hr className='my-5' />
-          <div>
+          <div className='text-white'>
             <table className='table-auto w-64'>
               <tr className='text-xs'>
                 <td>Directed by:</td>

@@ -4,14 +4,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { ComingSoonPage } from "./pages/ComingSoonPage";
 import { DetailsPage } from "./pages/DetailsPage";
-import { Root } from "./pages/Root";
-import { HomePage } from "./pages/HomePage";
 import { ErrorPage } from "./pages/ErrorPage";
+import { HomePage } from "./pages/HomePage";
+import { ListsPage } from "./pages/ListsPage";
 import { NowPlayingPage } from "./pages/NowPlayingPage";
 import { PopularPage } from "./pages/PopularPage";
 import { ProfilePage } from "./pages/ProfilePage";
+import { Root } from "./pages/Root";
 import { TopRatedPage } from "./pages/TopRatedPage";
-import { ListsPage } from "./pages/ListsPage";
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -49,23 +49,12 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <ProfilePage />,
       },
+      {
+        path: "/details",
+        element: <DetailsPage />,
+      },
     ],
   },
-  // {
-  //   path: "/",
-  //   element: <HomePage />,
-  //   errorElement: <NotFoundPage />,
-  // },
-  // {
-  //   path: "/profile",
-  //   element: <ProfilePage />,
-  // },
-  // {
-  //   path: "/movie/:movieId",
-  //   element: <DetailsPage />,
-  // },
-
-  // },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

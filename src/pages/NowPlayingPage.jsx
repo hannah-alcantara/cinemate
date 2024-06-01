@@ -1,3 +1,9 @@
+import MovieList from "../components/MovieList";
+
 export function NowPlayingPage() {
-  return <div>NowPlayingPage</div>;
+  return (
+    <div className='bg-white'>
+      <MovieList />
+    </div>
+  );
 }

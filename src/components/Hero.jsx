@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 export function Hero() {
   return (
-    <section className='bg-black'>
+    <section className='bg-black text-white'>
       <div className='relative grid grid-cols-3 gap-3 p-6 pt-0 bg-black'>
         {Movies.map((movie) => {
           return (
-            <div key={movie}>
+            <div key={movie.id}>
               <Link to={`/movie/${movie.id}`}>
                 <img
                   src={movie.backdrop_path}

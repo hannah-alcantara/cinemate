@@ -1,29 +1,31 @@
+import { Link } from "react-router-dom";
+
 export function Footer() {
   return (
-    <footer className="bg-black p-8">
-      <a href="/" className="text-3xl font-bold font-oswald">
+    <footer className='bg-black p-8 text-white'>
+      <Link to='/' className='text-3xl font-bold font-oswald'>
         CINEMATE
-      </a>
-      <ul className="flex justify-between my-6">
+      </Link>
+      <ul className='flex justify-between my-6'>
         <li>
-          <a href="#">About</a>
+          <Link to='#'>About</Link>
         </li>
         <li>
-          <a href="#">Contact</a>
+          <Link to='#'>Contact</Link>
         </li>
         <li>
-          <a href="#">API</a>
+          <Link to='#'>API</Link>
         </li>
         <li>
-          <a href="#">Github</a>
+          <Link to='#'>Github</Link>
         </li>
       </ul>
-      <hr className="my-6" />
-      <span class="block text-sm">
+      <hr className='my-6' />
+      <span className='block text-sm'>
         © 2023{" "}
-        <a href="#" class="hover:underline">
+        <Link to='#' className='hover:underline'>
           CINEMATE™
-        </a>
+        </Link>
         . All Rights Reserved.
       </span>
     </footer>

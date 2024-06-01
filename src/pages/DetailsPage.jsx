@@ -6,7 +6,6 @@ import { Footer } from "../components/Footer";
 export function DetailsPage() {
   return (
     <div>
-      <Navigation />
       <MovieDetail />
       <MovieSimilar />
       <Footer />

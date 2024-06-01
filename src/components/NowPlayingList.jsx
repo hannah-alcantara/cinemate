@@ -9,7 +9,7 @@ export function NowPlayingList() {
       <div className='grid grid-flow-col auto-cols-[34%] gap-5 overflow-x-auto overscroll-x-contain mt-8'>
         {/* <FontAwesomeIcon icon={faCircleArrowLeft} /> */}
         {Movies.map((movie) => (
-          <li className='list-none'>
+          <li key={movie.id} className='list-none'>
             <div className='relative'>
               <Link to='/details'>
                 {/* //Only for Desktop
@@ -25,7 +25,9 @@ export function NowPlayingList() {
                 />
               </Link>
             </div>
-            <a className='inline-block font-medium mt-3 mb-1'>{movie.title}</a>
+            <Link className='inline-block font-medium mt-3 mb-1'>
+              {movie.title}
+            </Link>
             <p className='font-courier text-xs'>{movie.release_date}</p>
           </li>
         ))}

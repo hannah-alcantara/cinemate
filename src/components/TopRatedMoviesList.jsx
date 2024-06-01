@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Movies from "../movies.json";
 import Title from "./Title";
 
@@ -8,18 +9,18 @@ export function TopRatedMoviesList() {
       <div className='grid grid-flow-col auto-cols-[64%] gap-5 overflow-x-auto overscroll-x-contain mt-8'>
         {/* <FontAwesomeIcon icon={faCircleArrowLeft} /> */}
         {Movies.map((movie) => (
-          <div className='bg-black rounded h-fit'>
-            <a href='#'>
+          <div key={movie.id} className='bg-black rounded h-fit'>
+            <Link href='#'>
               <img
                 src={movie.backdrop_path}
                 alt='Poster'
                 className='rounded-t'
               />
-            </a>
+            </Link>
             <div className='px-4 py-5'>
-              <a className='font-source inline-block font-black'>
+              <Link className='font-source inline-block font-black'>
                 {movie.title}
-              </a>
+              </Link>
               <p className='font-source text-xs leading-5'>
                 {movie.release_date}
               </p>

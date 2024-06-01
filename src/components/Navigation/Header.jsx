@@ -9,7 +9,7 @@ const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   return (
-    <header className='shadow-lg font-medium bg-black'>
+    <header className='shadow-lg font-medium bg-black text-white'>
       <div className='flex items-center justify-between max-w-full md:mx-auto p-5'>
         {/* Hamburger Menu */}
         <div className='md:hidden w-1/3'>
