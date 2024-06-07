@@ -25,10 +25,12 @@ export function NowPlayingList() {
                 />
               </Link>
             </div>
-            <Link className='inline-block font-medium mt-3 mb-1'>
+            <Link className='inline-block font-medium mt-3 mb-1 text-white'>
               {movie.title}
             </Link>
-            <p className='font-courier text-xs'>{movie.release_date}</p>
+            <p className='font-courier text-xs text-white'>
+              {movie.release_date}
+            </p>
           </li>
         ))}
 

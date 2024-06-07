@@ -8,17 +8,17 @@ export function TopRatedMoviesList() {
       <Title to='/toprated' text='Top Rated' />
       <div className='grid grid-flow-col auto-cols-[64%] gap-5 overflow-x-auto overscroll-x-contain mt-8'>
         {/* <FontAwesomeIcon icon={faCircleArrowLeft} /> */}
-        {Movies.map((movie) => (
+        {Movies.slice(0, 5).map((movie) => (
           <div key={movie.id} className='bg-black rounded h-fit'>
-            <Link href='#'>
+            <Link to='#'>
               <img
                 src={movie.backdrop_path}
                 alt='Poster'
                 className='rounded-t'
               />
             </Link>
-            <div className='px-4 py-5'>
-              <Link className='font-source inline-block font-black'>
+            <div className='px-4 py-5 text-white'>
+              <Link className='font-source inline-block font-black '>
                 {movie.title}
               </Link>
               <p className='font-source text-xs leading-5'>

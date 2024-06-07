@@ -1,19 +1,27 @@
 import { useEffect, useState } from "react";
-import Movies from "../movies.json";
-import { Link } from "react-router-dom";
 import Movie from "./Movie";
+import ConfigService from "./Services/ConfigService";
 import MovieService from "./Services/MovieService";
-
-const API_URL = "https://api.themoviedb.org/3/discover/movie?api_key=";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
+  const [config, setConfig] = useState([]);
 
   const getMovies = async () => {
     try {
       const movieData = await MovieService();
-      console.log("movieData", movieData);
       setMovies(movieData.results);
+      console.log("movieData", movieData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getConfig = async () => {
+    try {
+      const configData = await ConfigService();
+      setConfig(configData);
+      console.log("configData", configData);
     } catch (error) {
       console.error(error);
     }
@@ -21,14 +29,15 @@ const MovieList = () => {
 
   useEffect(() => {
     getMovies();
+    getConfig();
   }, []);
 
   return (
     <div className='p-8'>
       <ul className='grid grid-cols-3 gap-5 text-center'>
         {movies.map((movie) => (
-          <div key={movie.id}>{movie.title}</div>
-          // <Movie key={movie.id} movie={movie} />
+          // <div key={movie.id}>{movie.title}</div>
+          <Movie key={movie.id} movie={movie} config={config} />
         ))}
       </ul>
     </div>
