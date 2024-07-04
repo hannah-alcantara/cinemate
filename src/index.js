@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { ComingSoonPage } from "./pages/ComingSoonPage";
-import { DetailsPage } from "./pages/DetailsPage";
+import DetailsPage from "./pages/DetailsPage";
 import { ErrorPage } from "./pages/ErrorPage";
-import { HomePage } from "./pages/HomePage";
+import HomePage from "./pages/home/HomePage";
 import { ListsPage } from "./pages/ListsPage";
 import { NowPlayingPage } from "./pages/NowPlayingPage";
 import { PopularPage } from "./pages/PopularPage";
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: "/details",
+        path: "/movie/:id",
         element: <DetailsPage />,
       },
     ],

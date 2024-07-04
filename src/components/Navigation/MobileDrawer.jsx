@@ -25,14 +25,14 @@ const MobileDrawer = ({ isDrawerOpen, setIsDrawerOpen }) => {
         </div>
 
         {/* Drawer content */}
-        <div role='mobile menu'>
+        <div>
           <ul>
             {menuData
               .flatMap((item) => item.submenu || [])
               //if item.submenu exist, include in the flattened array : include empty array
-              .map((subitem, index) => (
+              .map((subitem) => (
                 //map over new array to get submenu
-                <li key={index} className=' px-4 py-2'>
+                <li key={subitem} className=' px-4 py-2'>
                   <Link
                     to={subitem.url}
                     onClick={() => {

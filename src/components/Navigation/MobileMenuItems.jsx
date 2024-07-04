@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Search } from "../Search";
 
 const MobileMenuItems = () => {
   const [search, setSearch] = useState(false);
@@ -41,18 +42,7 @@ const MobileMenuItems = () => {
       <button onClick={() => setSearch(!search)}>
         <i className='fas fa-magnifying-glass'></i>
       </button>
-      {search && (
-        <div className='absolute top-16 left-0 z-10 backdrop-blur-lg bg-black bg-opacity-80 h-18 p-6 w-full drop-shadow-2xl'>
-          <input
-            type='text'
-            placeholder='Search'
-            className='h-10 w-full pl-10 text-md font-courier text-gray-900 border border-gray focus:outline-none'
-          />
-          <span className='absolute left-9 top-8'>
-            <i className='fas fa-magnifying-glass text-gray-400 text-sm' />
-          </span>
-        </div>
-      )}
+      {search && <Search />}
     </nav>
   );
 };

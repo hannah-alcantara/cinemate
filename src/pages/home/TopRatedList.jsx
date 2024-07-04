@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import Movies from "../movies.json";
-import Title from "./Title";
+import Movies from "../../movies.json";
+import Title from "../../components/Title";
 
-export function TopRatedMoviesList() {
+export function TopRatedList() {
   return (
     <section className='p-8'>
       <Title to='/toprated' text='Top Rated' />

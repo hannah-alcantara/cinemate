@@ -1,14 +1,13 @@
-import { MovieDetail } from "../components/MovieDetail";
-import Navigation from "../components/Navigation";
+import MovieDetail from "../components/MovieDetail";
 import { MovieSimilar } from "../components/MovieSimilar";
-import { Footer } from "../components/Footer";
 
-export function DetailsPage() {
+const DetailsPage = () => {
   return (
     <div>
       <MovieDetail />
-      <MovieSimilar />
-      <Footer />
+      {/* <MovieSimilar /> */}
     </div>
   );
-}
+};
+
+export default DetailsPage;

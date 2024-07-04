@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function Movie({ movie, config }) {
   return (
-    <li>
-      <Link to='/details'>
+    <li className='list-none'>
+      <Link to={`/movie/${movie.id}`}>
         {config.images?.base_url && (
           <img
             className='shadow-lg'

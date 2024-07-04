@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Movies from "../movies.json";
 import Title from "./Title";
 
+// Change to recommendations
 export function MovieSimilar() {
   return (
     <section className='p-8'>
@@ -9,7 +10,7 @@ export function MovieSimilar() {
       <div className='grid grid-flow-col auto-cols-[30%] gap-5 overflow-x-auto overscroll-x-contain mt-8'>
         {/* <FontAwesomeIcon icon={faCircleArrowLeft} /> */}
         {Movies.map((movie) => (
-          <li className='list-none'>
+          <li key={movie.id} className='list-none'>
             <div className='relative'>
               <Link to='/details'>
                 {/* //Only for Desktop

@@ -1,44 +1,42 @@
 import { useEffect, useState } from "react";
+// import Movies from "../movies.json";
+import { Filter } from "./Filter";
 import Movie from "./Movie";
-import ConfigService from "./Services/ConfigService";
-import MovieService from "./Services/MovieService";
+import fetchConfig from "./Services/fetchConfig";
+import fetchMovies from "./Services/fetchMovies";
 
-const MovieList = () => {
+const MovieList = ({ endpoint }) => {
+  const [filter, setFilter] = useState("");
   const [movies, setMovies] = useState([]);
   const [config, setConfig] = useState([]);
 
-  const getMovies = async () => {
-    try {
-      const movieData = await MovieService();
-      setMovies(movieData.results);
-      console.log("movieData", movieData);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const getConfig = async () => {
-    try {
-      const configData = await ConfigService();
-      setConfig(configData);
-      console.log("configData", configData);
-    } catch (error) {
-      console.error(error);
-    }
+    const configData = await fetchConfig();
+    setConfig(configData);
+    // console.log("configData", configData);
   };
 
   useEffect(() => {
+    const getMovies = async () => {
+      const movieData = await fetchMovies(endpoint);
+      setMovies(movieData.results);
+    };
+
     getMovies();
     getConfig();
-  }, []);
+  }, [endpoint]);
 
   return (
     <div className='p-8'>
+      <Filter filter={filter} setFilter={setFilter} />
       <ul className='grid grid-cols-3 gap-5 text-center'>
-        {movies.map((movie) => (
-          // <div key={movie.id}>{movie.title}</div>
-          <Movie key={movie.id} movie={movie} config={config} />
-        ))}
+        {movies
+          .filter((movie) =>
+            movie.title.toLowerCase().includes(filter.toLowerCase())
+          )
+          .map((movie) => (
+            <Movie key={movie.id} movie={movie} config={config} />
+          ))}
       </ul>
     </div>
   );
