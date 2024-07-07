@@ -19,7 +19,7 @@ const PopularList = ({ endpoint }) => {
     const getMovies = async () => {
       const movieData = await fetchMovies(endpoint);
       setMovies(movieData.results);
-      console.log("Popular:", movieData);
+      // console.log("Popular:", movieData);
     };
 
     getMovies();
@@ -29,9 +29,9 @@ const PopularList = ({ endpoint }) => {
   return (
     <section className='p-8'>
       <Title to='/popular' text='Popular' />
-      {movies.slice(0, 3).map((movie, index) => {
+      {movies.slice(0, 3).map((movie) => {
         return (
-          <div key={index} className='relative overflow-hidden my-8'>
+          <div key={movie.id} className='relative overflow-hidden my-8'>
             <div className='group relative m-0 flex'>
               <div className='z-10 h-full w-full overflow-hidden rounded-xl border border-gray-800 opacity-85 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70'>
                 <Link to={`/movie/${movie.id}`}>

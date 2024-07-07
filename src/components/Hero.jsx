@@ -3,28 +3,21 @@ import ConfigService from "./Services/fetchConfig";
 import fetchMovies from "./Services/fetchMovies";
 // import Movie from "../movies.json";
 import { Link } from "react-router-dom";
-export function Hero() {
+
+export function Hero({endpoint}) {
   const [movies, setMovies] = useState([]);
   const [config, setConfig] = useState([]);
 
   const getMovies = async () => {
-    try {
-      const movieData = await fetchMovies("popular");
+      const movieData = await fetchMovies(endpoint);
       setMovies(movieData.results);
       // console.log("movieData", movieData);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const getConfig = async () => {
-    try {
       const configData = await ConfigService();
       setConfig(configData);
-      console.log("configData", configData);
-    } catch (error) {
-      console.error(error);
-    }
+      // console.log("configData", configData);
   };
 
   useEffect(() => {
@@ -34,19 +27,6 @@ export function Hero() {
 
   return (
     <section className='bg-black text-white'>
-      {/* <div className='relative grid grid-cols-4 gap-4 px-5 pb-5'>
-        {Movie.slice(0, 4).map((movie) => {
-          return (
-            <div>
-              <img
-                src={movie.backdrop_path}
-                alt='Backdrop'
-                className='h-auto max-w-full rounded-lg grayscale hover:grayscale-0 duration-500'
-              />
-            </div>
-          );
-        })}
-      </div> */}
       <div className='relative grid gap-4 px-4'>
         {movies.slice(0, 1).map((movie) => {
           return (
@@ -81,9 +61,6 @@ export function Hero() {
                   alt={movie.title + " Poster"}
                 />
               )}
-              {/* <h1 className='absolute bottom-0 pb-4 pl-4 [text-shadow:_0_1px_0_rgb(0_0_0_/_30%)] font-oswald text-2xl'>
-                {movie.title}
-              </h1> */}
             </Link>
           );
         })}

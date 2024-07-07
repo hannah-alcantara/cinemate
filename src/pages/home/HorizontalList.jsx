@@ -13,7 +13,7 @@ const HorizontalList = ({ endpoint }) => {
   const getConfig = async () => {
     const configData = await fetchConfig();
     setConfig(configData);
-    // console.log("configData", configData);
+    console.log("configData", configData);
   };
 
   useEffect(() => {
