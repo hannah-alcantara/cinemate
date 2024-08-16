@@ -1,36 +1,42 @@
 import { useEffect, useState } from "react";
-import ConfigService from "./Services/fetchConfig";
-import fetchMovies from "./Services/fetchMovies";
-// import Movie from "../movies.json";
+import ConfigService from "../../services/fetchConfig";
 import { Link } from "react-router-dom";
 
-export function Hero({endpoint}) {
+const Hero = ({ endpoint }) => {
   const [movies, setMovies] = useState([]);
   const [config, setConfig] = useState([]);
 
+  //Note: Did not use fetchMovie service here bc needed to add {time_window}
   const getMovies = async () => {
-      const movieData = await fetchMovies(endpoint);
-      setMovies(movieData.results);
-      // console.log("movieData", movieData);
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_MOVIE_API}`
+      );
+      const trendingData = await response.json();
+      setMovies(trendingData.results);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const getConfig = async () => {
-      const configData = await ConfigService();
-      setConfig(configData);
-      // console.log("configData", configData);
+    const configData = await ConfigService();
+    setConfig(configData);
+    // console.log("configData", configData);
   };
 
   useEffect(() => {
     getMovies();
     getConfig();
-  }, []);
+  });
 
   return (
     <section className='bg-black text-white'>
+      {/* Big Pic */}
       <div className='relative grid gap-4 px-4'>
         {movies.slice(0, 1).map((movie) => {
           return (
-            <Link to={`/movie/${movie.id}`}>
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
               {config.images?.base_url && (
                 <img
                   className='h-auto max-w-full rounded-lg'
@@ -48,17 +54,20 @@ export function Hero({endpoint}) {
           );
         })}
       </div>
+
+      {/* 4 col row */}
       <div className='grid grid-cols-4 gap-4 p-5'>
         {movies.slice(1, 5).map((movie) => {
           return (
-            <Link to={`/movie/${movie.id}`}>
+            <Link key={movie.id} to={`/movie/${movie.id}`}>
               {config.images?.base_url && (
                 <img
-                  className='h-auto max-w-full rounded-lg grayscale hover:grayscale-0 duration-700'
+                  className='h-auto max-w-full rounded-lg'
                   src={
                     config.images.base_url + "original" + movie.backdrop_path
                   }
                   alt={movie.title + " Poster"}
+                  // grayscale hover:grayscale-0 duration-700
                 />
               )}
             </Link>
@@ -72,4 +81,6 @@ export function Hero({endpoint}) {
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

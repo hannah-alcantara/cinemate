@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 // import Movies from "../movies.json";
 import { Filter } from "./Filter";
 import Movie from "./Movie";
-import fetchConfig from "./Services/fetchConfig";
-import fetchMovies from "./Services/fetchMovies";
+import fetchConfig from "../services/fetchConfig";
+import fetchMovies from "../services/fetchMovies";
 
 const MovieList = ({ endpoint }) => {
   const [filter, setFilter] = useState("");
@@ -20,6 +20,7 @@ const MovieList = ({ endpoint }) => {
     const getMovies = async () => {
       const movieData = await fetchMovies(endpoint);
       setMovies(movieData.results);
+      // console.log(movieData.results);
     };
 
     getMovies();

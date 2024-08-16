@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
-import Movies from "../../movies.json";
 import Title from "../../components/Title";
-import fetchMovies from "../../components/Services/fetchMovies";
+import fetchMovies from "../../services/fetchMovies";
 import { useState, useEffect } from "react";
-import fetchConfig from "../../components/Services/fetchConfig";
+import fetchConfig from "../../services/fetchConfig";
 
 const PopularList = ({ endpoint }) => {
   const [movies, setMovies] = useState([]);

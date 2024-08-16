@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <header className='shadow-lg font-medium bg-black text-white'>
-      <div className='flex items-center justify-between max-w-full md:mx-auto p-5'>
+      <div className='flex items-center justify-between md:mx-auto p-5 max-w-screen-xl'>
         {/* Hamburger Menu */}
         <div className='md:hidden w-1/3'>
           <div className='block'>

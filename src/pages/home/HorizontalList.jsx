@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
-import Movies from "../../movies.json";
 import Title from "../../components/Title";
 import { useState, useEffect } from "react";
-import fetchMovies from "../../components/Services/fetchMovies";
-import fetchConfig from "../../components/Services/fetchConfig";
+import fetchMovies from "../../services/fetchMovies";
+import fetchConfig from "../../services/fetchConfig";
 import Movie from "../../components/Movie";
 
 const HorizontalList = ({ endpoint }) => {
@@ -13,7 +11,7 @@ const HorizontalList = ({ endpoint }) => {
   const getConfig = async () => {
     const configData = await fetchConfig();
     setConfig(configData);
-    console.log("configData", configData);
+    // console.log("configData", configData);
   };
 
   useEffect(() => {

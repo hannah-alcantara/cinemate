@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "m-grey": "#252422",
+        gray: "#252422",
       },
       fontFamily: {
         oswald: ["Oswald", "sans-serif"],
