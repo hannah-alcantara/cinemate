@@ -26,10 +26,11 @@ const HorizontalList = ({ endpoint }) => {
   }, [endpoint]);
 
   return (
-    <section className='p-8'>
+    <section className='p-8 max-w-screen-xl mx-auto'>
       <Title to='/nowplaying' text='In Theaters' />
-      <div className='grid grid-flow-col auto-cols-[34%] gap-5 overflow-x-auto overscroll-x-contain mt-8 text-white'>
-        {movies.slice(0, 6).map((movie) => (
+      <div className='grid grid-flow-col gap-6 overflow-x-auto overscroll-x-contain my-8'>
+        {/* style scroll wheel */}
+        {movies.map((movie) => (
           <Movie key={movie.id} movie={movie} config={config} />
         ))}
       </div>

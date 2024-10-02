@@ -4,9 +4,7 @@ const UserProfile = () => {
   return (
     // register
     <div className='md:ml-auto'>
-      <Link to='/login' className='m-4'>
-        Login
-      </Link>
+      <Link to='/login'>Login</Link>
       {/* add shadow */}
       {/* <Link to='/signup' className='bg-m-grey px-3 py-2 rounded-xl shadow-lg'>
         Sign up

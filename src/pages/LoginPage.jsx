@@ -52,9 +52,7 @@ const LoginPage = () => {
             This web app is designed to curate and organize your favorite films,
             creating a personalized library of extraordinary cinema. With
             Cinemate, you can easily explore, categorize, and revisit the movies
-            that have left a lasting impact on you. This project showcases my
-            skills and passion for app development, and is a part of my
-            portfolio.
+            that have left a lasting impact on you.
           </p>
         </div>
         <hr className='my-8 bg-black h-0.5' />

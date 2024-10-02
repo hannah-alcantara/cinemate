@@ -6,10 +6,10 @@ import TopRatedList from "./TopRatedList";
 const HomePage = () => {
   return (
     <div className='bg-gray'>
-      <Hero />
+      {/* <Hero /> */}
       <HorizontalList endpoint='now_playing' />
-      <PopularList endpoint='popular' />
-      <TopRatedList endpoint='top_rated' />
+      {/* <PopularList endpoint='popular' />
+      <TopRatedList endpoint='top_rated' /> */}
     </div>
   );
 };

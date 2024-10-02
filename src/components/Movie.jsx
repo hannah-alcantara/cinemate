@@ -6,12 +6,12 @@ export default function Movie({ movie, config }) {
       <Link to={`/movie/${movie.id}`}>
         {config.images?.base_url && (
           <img
-            className='shadow-lg'
-            src={config.images.base_url + "w342" + movie.poster_path}
+            className='shadow-lg max-w-40 mb-6'
+            src={config.images.base_url + "original" + movie.poster_path}
             alt={movie.title + " Poster"}
           />
         )}
-        <h2 className='inline-block pt-2'>{movie.title}</h2>
+        <h2 className='inline-block text-white'>{movie.title}</h2>
       </Link>
     </li>
   );

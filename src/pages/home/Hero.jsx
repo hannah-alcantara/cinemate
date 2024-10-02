@@ -31,53 +31,55 @@ const Hero = ({ endpoint }) => {
   });
 
   return (
-    <section className='bg-black text-white'>
-      {/* Big Pic */}
-      <div className='relative grid gap-4 px-4'>
-        {movies.slice(0, 1).map((movie) => {
-          return (
-            <Link key={movie.id} to={`/movie/${movie.id}`}>
-              {config.images?.base_url && (
-                <img
-                  className='h-auto max-w-full rounded-lg'
-                  src={
-                    config.images.base_url + "original" + movie.backdrop_path
-                  }
-                  // backdrop_sizes: ['w300', 'w780', 'w1280', 'original']
-                  alt={movie.title + " Poster"}
-                />
-              )}
-              <h1 className='absolute bottom-0 pb-4 pl-4 [text-shadow:_0_1px_0_rgb(0_0_0_/_30%)] font-oswald text-2xl'>
-                {movie.title}
-              </h1>
-            </Link>
-          );
-        })}
-      </div>
+    <section className='bg-black text-white '>
+      <div className='max-w-screen-xl mx-auto px-5 lg:px-7'>
+        {/* Big Pic */}
+        <div className='relative grid'>
+          {movies.slice(0, 1).map((movie) => {
+            return (
+              <Link key={movie.id} to={`/movie/${movie.id}`}>
+                {config.images?.base_url && (
+                  <img
+                    className='h-auto max-w-full rounded-lg'
+                    src={
+                      config.images.base_url + "original" + movie.backdrop_path
+                    }
+                    // backdrop_sizes: ['w300', 'w780', 'w1280', 'original']
+                    alt={movie.title + " Poster"}
+                  />
+                )}
+                <h1 className='absolute bottom-0 pb-4 pl-4 drop-shadow-xl font-oswald text-3xl sm:text-5xl md:text-6xl lg:text-8xl md:pb-8 md:pl-8'>
+                  {movie.title}
+                </h1>
+              </Link>
+            );
+          })}
+        </div>
 
-      {/* 4 col row */}
-      <div className='grid grid-cols-4 gap-4 p-5'>
-        {movies.slice(1, 5).map((movie) => {
-          return (
-            <Link key={movie.id} to={`/movie/${movie.id}`}>
-              {config.images?.base_url && (
-                <img
-                  className='h-auto max-w-full rounded-lg'
-                  src={
-                    config.images.base_url + "original" + movie.backdrop_path
-                  }
-                  alt={movie.title + " Poster"}
-                  // grayscale hover:grayscale-0 duration-700
-                />
-              )}
-            </Link>
-          );
-        })}
-        {/* <span className='bg-black absolute top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+        {/* 4 col row */}
+        <div className='grid grid-cols-4 gap-4 py-5 lg:py-8'>
+          {movies.slice(1, 5).map((movie) => {
+            return (
+              <Link key={movie.id} to={`/movie/${movie.id}`}>
+                {config.images?.base_url && (
+                  <img
+                    className='h-auto max-w-full rounded-lg'
+                    src={
+                      config.images.base_url + "original" + movie.backdrop_path
+                    }
+                    alt={movie.title + " Poster"}
+                    // grayscale hover:grayscale-0 duration-700
+                  />
+                )}
+              </Link>
+            );
+          })}
+          {/* <span className='bg-black absolute top-28 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
           <h1 className='font-courier font-medium whitespace-nowrap text-xs p-2'>
             Your Personal Collection of Cinematic Masterpieces
           </h1>
         </span> */}
+        </div>
       </div>
     </section>
   );
