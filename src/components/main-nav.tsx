@@ -85,14 +85,14 @@ export function MainNav() {
               </svg>
             </Button>
           </SheetTrigger>
-          <SheetContent side='left' className='w-[300px] sm:w-[400px]'>
+          <SheetContent side='left' className='w-[300px] sm:w-[400px] p-6'>
             <div className='flex flex-col gap-6 py-4'>
               <Link
                 href='/'
                 className='flex items-center gap-2 font-bold text-xl'
               >
                 <Film className='h-6 w-6' />
-                <span>MovieVerse</span>
+                <span className='font-oswald'>CINEMATE</span>
               </Link>
               <div className='relative'>
                 <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />

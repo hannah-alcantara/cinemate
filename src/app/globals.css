@@ -120,11 +120,13 @@
     @apply bg-background text-foreground font-mono;
   }
   h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h2 {
     font-family: var(--font-oswald), sans-serif;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply w-full mx-auto px-8;
   }
 }
