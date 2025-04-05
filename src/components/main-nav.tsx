@@ -18,40 +18,26 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
-const genres = [
+const sections = [
   {
-    title: "Action",
-    href: "/movies/genre/action",
-    description:
-      "Thrilling action movies with high-octane sequences and adventure.",
+    title: "Now Playing",
+    href: "/movies/now_playing",
+    description: "Watch the latest movies currently in theaters.",
   },
   {
-    title: "Comedy",
-    href: "/movies/genre/comedy",
-    description: "Laugh-out-loud comedies that will brighten your day.",
+    title: "Popular",
+    href: "/movies/popular",
+    description: "Discover the most talked-about and trending films.",
   },
   {
-    title: "Drama",
-    href: "/movies/genre/drama",
-    description:
-      "Emotional and powerful stories that explore the human condition.",
+    title: "Top Rated",
+    href: "/movies/top_rated",
+    description: "Explore the highest-rated movies of all time.",
   },
   {
-    title: "Sci-Fi",
-    href: "/movies/genre/sci-fi",
-    description:
-      "Futuristic tales exploring technology, space, and alternate realities.",
-  },
-  {
-    title: "Horror",
-    href: "/movies/genre/horror",
-    description:
-      "Spine-chilling horror films that will keep you on the edge of your seat.",
-  },
-  {
-    title: "Romance",
-    href: "/movies/genre/romance",
-    description: "Love stories that capture the heart and imagination.",
+    title: "Upcoming",
+    href: "/movies/upcoming",
+    description: "Stay updated on soon-to-be-released films.",
   },
 ];
 
@@ -119,13 +105,13 @@ export function MainNav() {
                     Movies
                   </span>
                   <div className='ml-7 flex flex-col space-y-2 text-muted-foreground'>
-                    {genres.map((genre) => (
+                    {sections.map((section) => (
                       <Link
-                        key={genre.title}
-                        href={genre.href}
+                        key={section.title}
+                        href={section.href}
                         className='transition-colors hover:text-primary'
                       >
-                        {genre.title}
+                        {section.title}
                       </Link>
                     ))}
                   </div>
@@ -188,19 +174,19 @@ export function MainNav() {
             <NavigationMenuItem>
               <NavigationMenuTrigger>Movies</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
-                  {genres.map((genre) => (
-                    <li key={genre.title}>
+                <ul className='grid w-[450px] gap-3 p-4 md:w-[520px] md:grid-cols-2 lg:w-[600px]'>
+                  {sections.map((section) => (
+                    <li key={section.title}>
                       <NavigationMenuLink asChild>
                         <Link
-                          href={genre.href}
+                          href={section.href}
                           className='block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
                         >
                           <div className='text-sm font-medium leading-none'>
-                            {genre.title}
+                            {section.title}
                           </div>
                           <p className='line-clamp-2 text-sm leading-snug text-muted-foreground'>
-                            {genre.description}
+                            {section.description}
                           </p>
                         </Link>
                       </NavigationMenuLink>

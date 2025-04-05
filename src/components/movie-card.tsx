@@ -27,6 +27,7 @@ export function MovieCard({ movie }: MovieCardProps) {
     : "";
 
   // Construct poster URL
+  // fix: optimize loading image
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
     : "/placeholder.svg";
@@ -38,7 +39,7 @@ export function MovieCard({ movie }: MovieCardProps) {
       </Link>
       <div className='relative aspect-[2/3] overflow-hidden'>
         <Image
-          src={posterUrl || "/placeholder.svg"}
+          src={posterUrl}
           alt={movie.title}
           fill
           className='object-cover transition-transform group-hover:scale-105'

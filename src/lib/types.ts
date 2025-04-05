@@ -1,5 +1,5 @@
 export interface Movie {
-  id: number;
+  id: string;
   title: string;
   overview: string;
   poster_path: string | null;
@@ -13,20 +13,15 @@ export interface Movie {
   popularity: number;
   adult: boolean;
   video: boolean;
-
-  // Computed/Optional properties for easier use
-  posterUrl?: string;
-  backdropUrl?: string;
-  year?: string;
-  rating?: number;
 }
 
-export interface MovieResponse {
-  page: number;
-  results: Movie[];
-  total_pages: number;
-  total_results: number;
-}
+// export interface Config {
+//   air_time: number;
+//   cast: string;
+//   created_by: string;
+//   crew: string;
+//   genres: string;
+// }
 
 export interface Playlist {
   id: string;

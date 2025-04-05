@@ -127,6 +127,7 @@
 
 @layer utilities {
   .container {
-    @apply w-full mx-auto px-8;
+    @apply w-full mx-auto;
+    /* px-8 */
   }
 }
