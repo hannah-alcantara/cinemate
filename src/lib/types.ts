@@ -41,10 +41,10 @@ interface Credit {
   character?: string; // optional for cast members
 }
 
-interface MovieCredits {
-  cast: Credit[];
-  crew: Credit[];
-}
+// interface MovieCredits {
+//   cast: Credit[];
+//   crew: Credit[];
+// }
 
 export interface MovieWithCredits extends Movie {
   director: Credit | undefined;
