@@ -16,9 +16,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import AuthStatus from "./auth-status";
 
-const sections = [
+const category = [
   {
     title: "Now Playing",
     href: "/movies/now_playing",
@@ -105,7 +105,7 @@ export function MainNav() {
                     Movies
                   </span>
                   <div className='ml-7 flex flex-col space-y-2 text-muted-foreground'>
-                    {sections.map((section) => (
+                    {category.map((section) => (
                       <Link
                         key={section.title}
                         href={section.href}
@@ -175,7 +175,7 @@ export function MainNav() {
               <NavigationMenuTrigger>Movies</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className='grid w-[450px] gap-3 p-4 md:w-[520px] md:grid-cols-2 lg:w-[600px]'>
-                  {sections.map((section) => (
+                  {category.map((section) => (
                     <li key={section.title}>
                       <NavigationMenuLink asChild>
                         <Link
@@ -246,13 +246,7 @@ export function MainNav() {
             <Search className='h-5 w-5' />
             <span className='sr-only'>Search</span>
           </Button>
-          <Link href='/profile'>
-            <Avatar>
-              <AvatarFallback>
-                <User className='h-5 w-5' />
-              </AvatarFallback>
-            </Avatar>
-          </Link>
+          <AuthStatus />
         </div>
       </div>
     </div>

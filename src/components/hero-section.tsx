@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import { useState, useEffect } from "react";
-import { getMovies } from "@/services/movie-service";
+import { getMovieCategory } from "@/services/movie-service";
 import { Movie } from "@/lib/types";
 // import {
 //   Collapsible,
@@ -21,7 +21,7 @@ export function HeroSection() {
       // setLoading(true);
 
       try {
-        const data = await getMovies("popular");
+        const data = await getMovieCategory("popular");
         setMovies(data.results);
         console.log("movies: ", data.results);
       } catch (error) {
@@ -36,6 +36,7 @@ export function HeroSection() {
 
   return (
     <section>
+      {/* fix: add carousel of movies */}
       {movies.slice(0, 1).map((movie) => (
         <div
           key={movie.id}
@@ -56,7 +57,11 @@ export function HeroSection() {
                 {movie.title}
               </h1>
               {/* ADD: button to shorten description */}
-              <p className='text-lg text-white/90 max-w-xl'>{movie.overview}</p>
+              {movie.overview && (
+                <p className='text-lg text-white/90 max-w-xl'>
+                  {movie.overview.split(". ")[0] + "."}
+                </p>
+              )}
 
               <div className='flex flex-wrap gap-3'>
                 <Button size='lg' className='gap-2'>

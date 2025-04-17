@@ -9,9 +9,8 @@ interface MovieDetailsProps {
     id: string;
   };
 }
-//need to add types for movie details?
 
-export default async function MovieDetals({ params }: MovieDetailsProps) {
+export default async function MovieDetails({ params }: MovieDetailsProps) {
   const movie = await getMovieDetails(params.id);
 
   // Transform release_date to year
@@ -78,6 +77,63 @@ export default async function MovieDetals({ params }: MovieDetailsProps) {
               <Button size='lg' variant='outline' className='gap-2'>
                 <Heart className='w-5 h-5' /> Add to Favorites
               </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='container px-4 py-12 mx-auto'>
+        <div className='grid md:grid-cols-3 gap-8'>
+          <div className='md:col-span-2 space-y-8'>
+            <div>
+              <h2 className='text-2xl font-bold mb-4'>About the Movie</h2>
+              <p className='text-muted-foreground'>{movie.overview}</p>
+            </div>
+
+            <div>
+              <h2 className='text-2xl font-bold mb-4'>Cast & Crew</h2>
+              <div className='space-y-4'>
+                <div>
+                  <h3 className='font-medium'>Director</h3>
+                  <p className='text-muted-foreground'>
+                    {movie.director?.name}
+                  </p>
+                </div>
+                <div>
+                  <h3 className='font-medium'>Cast</h3>
+                  <div className='flex flex-wrap gap-2 mt-2'>
+                    {movie.cast?.map((actor) => (
+                      <span
+                        key={actor.id}
+                        className='px-3 py-1 bg-muted rounded-full text-sm'
+                      >
+                        {actor.name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div className='sticky top-8 space-y-6'>
+              <div className='rounded-lg overflow-hidden'>
+                <Image
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                  alt={movie.title}
+                  width={300}
+                  height={450}
+                  className='w-full object-cover'
+                />
+              </div>
+
+              <div className='space-y-3'>
+                {/* fix: buttons as client components */}
+                <Button className='w-full'>Watch Now</Button>
+                <Button variant='outline' className='w-full'>
+                  Add to Watchlist
+                </Button>
+              </div>
             </div>
           </div>
         </div>

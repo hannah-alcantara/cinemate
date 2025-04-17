@@ -2,15 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, Plus, Star } from "lucide-react";
+import { Heart, Star } from "lucide-react";
+//Plus,
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
 import type { Movie } from "@/lib/types";
 import { useState } from "react";
 
@@ -41,7 +42,9 @@ export function MovieCard({ movie }: MovieCardProps) {
         <Image
           src={posterUrl}
           alt={movie.title}
-          fill
+          // fill
+          width={500}
+          height={750}
           className='object-cover transition-transform group-hover:scale-105'
         />
 

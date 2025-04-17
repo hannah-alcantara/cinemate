@@ -1,11 +1,12 @@
-import type { Movie, Playlist } from "@/lib/types";
+import type { Playlist, MovieWithCredits } from "@/lib/types";
 
 const API_URL = "https://api.themoviedb.org/3";
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 
 if (!API_KEY) throw new Error("Missing API key");
 
-export async function getMovies(category: string) {
+// for movies by category
+export async function getMovieCategory(category: string) {
   let endpoint = "";
 
   switch (category) {
@@ -21,9 +22,9 @@ export async function getMovies(category: string) {
     case "upcoming":
       endpoint = `${API_URL}/movie/upcoming`;
       break;
-    // case "trending":
-    //   endpoint = `${API_URL}/trending/movie/day`;
-    //   break;
+    case "trending":
+      endpoint = `${API_URL}/trending/movie/day`;
+      break;
     default:
       throw new Error("Invalid movie type");
   }
@@ -34,18 +35,46 @@ export async function getMovies(category: string) {
     throw new Error("Failed to fetch movies");
   }
 
-  return response.json();
+  return await response.json();
 }
 
-export async function getMovieDetails(id: string) {
-  const response = await fetch(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
+// for movie details
+export const getMovieDetails = async (
+  id: string
+): Promise<MovieWithCredits> => {
+  const movieDetailsUrl = `${API_URL}/movie/${id}?api_key=${API_KEY}`;
+  const movieCreditsUrl = `${API_URL}/movie/${id}/credits?api_key=${API_KEY}`;
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch movie details");
+  try {
+    const [movieDetailsRes, movieCreditsRes] = await Promise.all([
+      fetch(movieDetailsUrl),
+      fetch(movieCreditsUrl),
+    ]);
+
+    if (!movieDetailsRes.ok || !movieCreditsRes.ok) {
+      throw new Error("Failed to fetch movie details or credits");
+    }
+
+    const movieDetails = await movieDetailsRes.json();
+    const movieCredits = await movieCreditsRes.json();
+
+    // Extract director and cast from movieCredits response
+    const director = movieCredits.crew.find(
+      (member: any) => member.job === "Director"
+    );
+    const cast = movieCredits.cast.slice(0, 5); // Limit to the first 5 cast members
+
+    // Return movie details + credits (director and cast)
+    return {
+      ...movieDetails,
+      director,
+      cast,
+    };
+  } catch (error) {
+    console.error("Error fetching movie details or credits:", error);
+    throw error; // Rethrow error for handling elsewhere
   }
-
-  return response.json();
-}
+};
 
 //FIX: needs user viewing history data from database
 // export async function getRecommendedMovies(movieId: number) {

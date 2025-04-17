@@ -2,14 +2,15 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import MovieGrid from "@/components/movie-grid";
-import RecommendedMovies from "@/components/recommended-movies";
+// import RecommendedMovies from "@/components/recommended-movies";
 import { UserPlaylists } from "@/components/user-playlists";
 import { HeroSection } from "@/components/hero-section";
+import { MovieCarousel } from "@/components/movie-carousel";
 
 export default function Home() {
   return (
     <div className='min-h-screen bg-background'>
-      <HeroSection />
+      <MovieCarousel />
       <section className='container px-4 py-8 mx-auto space-y-8'>
         <div className='flex flex-col md:flex-row justify-between items-start md:items-center gap-4'>
           <div>
@@ -46,7 +47,7 @@ export default function Home() {
 
         <div className='py-8'>
           <h2 className='text-2xl font-bold mb-6'>Recommended For You</h2>
-          <RecommendedMovies category='popular' />
+          {/* <RecommendedMovies category='popular' /> */}
         </div>
 
         <div className='py-8'>

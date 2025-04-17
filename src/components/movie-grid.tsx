@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "@/components/movie-card";
 import { Movie } from "@/lib/types";
-import { getMovies } from "@/services/movie-service";
+import { getMovieCategory } from "@/services/movie-service";
 
 interface MovieGridProps {
   category: string;
@@ -18,7 +18,7 @@ export default function MovieGrid({ category }: MovieGridProps) {
       setLoading(true);
 
       try {
-        const data = await getMovies(category);
+        const data = await getMovieCategory(category);
         setMovies(data.results);
         // console.log("Movie: ", data.results);
       } catch (error) {
