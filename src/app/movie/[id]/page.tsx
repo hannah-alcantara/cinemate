@@ -5,18 +5,20 @@ import { Heart, Play, Plus, Star } from "lucide-react";
 import { notFound } from "next/navigation";
 
 interface MovieDetailsProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 }
 
 export default async function MovieDetails({ params }: MovieDetailsProps) {
-  const movie = await getMovieDetails(params.id);
+  const { id } = await params;
+
+  const movie = await getMovieDetails(id);
 
   // Transform release_date to year
   const year = movie.release_date
     ? new Date(movie.release_date).getFullYear().toString()
     : "";
+
+  const rating = movie.vote_average.toFixed(1);
 
   if (!movie) {
     notFound();
@@ -44,7 +46,7 @@ export default async function MovieDetails({ params }: MovieDetailsProps) {
             <div className='flex items-center gap-4'>
               <div className='flex items-center gap-1 text-white'>
                 <Star className='h-5 w-5 fill-yellow-400 text-yellow-400' />
-                <span className='font-medium'>{movie.vote_average}/10</span>
+                <span className='font-medium'>{rating}</span>
               </div>
               <span className='text-white/80'>•</span>
               <span className='text-white/80'>{year}</span>
@@ -68,12 +70,12 @@ export default async function MovieDetails({ params }: MovieDetailsProps) {
               </p>
             )}
             <div className='flex flex-wrap gap-3'>
-              <Button size='lg' className='gap-2'>
+              {/* <Button size='lg' className='gap-2'>
                 <Play className='w-5 h-5' /> Watch Trailer
               </Button>
               <Button size='lg' variant='secondary' className='gap-2'>
                 <Plus className='w-5 h-5' /> Add to Playlist
-              </Button>
+              </Button> */}
               <Button size='lg' variant='outline' className='gap-2'>
                 <Heart className='w-5 h-5' /> Add to Favorites
               </Button>
@@ -127,13 +129,12 @@ export default async function MovieDetails({ params }: MovieDetailsProps) {
                 />
               </div>
 
-              <div className='space-y-3'>
-                {/* fix: buttons as client components */}
+              {/* <div className='space-y-3'>
                 <Button className='w-full'>Watch Now</Button>
                 <Button variant='outline' className='w-full'>
                   Add to Watchlist
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

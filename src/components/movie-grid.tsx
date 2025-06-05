@@ -34,7 +34,7 @@ export default function MovieGrid({ category }: MovieGridProps) {
   if (loading) {
     return (
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-6'>
-        {Array.from({ length: 9 }).map((_, i) => (
+        {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}
             className='aspect-[2/3] rounded-md bg-muted animate-pulse'
@@ -46,7 +46,7 @@ export default function MovieGrid({ category }: MovieGridProps) {
 
   return (
     <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-6'>
-      {movies.slice(0, 10).map((movie) => (
+      {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
     </div>

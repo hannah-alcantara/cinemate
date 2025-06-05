@@ -6,12 +6,6 @@ import { Heart, Star } from "lucide-react";
 //Plus,
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-// import {
-//   DropdownMenu,
-//   DropdownMenuContent,
-//   DropdownMenuItem,
-//   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu";
 import type { Movie } from "@/lib/types";
 import { useState } from "react";
 
@@ -27,6 +21,16 @@ export function MovieCard({ movie }: MovieCardProps) {
     ? new Date(movie.release_date).getFullYear().toString()
     : "";
 
+  const rating = movie.vote_average.toFixed(1);
+
+  // Create a slug from the movie title
+  function createSlug(title: string): string {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-") // Replace non-alphanumeric with hyphens
+      .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
+  }
+
   // Construct poster URL
   // fix: optimize loading image
   const posterUrl = movie.poster_path
@@ -35,7 +39,10 @@ export function MovieCard({ movie }: MovieCardProps) {
 
   return (
     <Card className='overflow-hidden group relative'>
-      <Link href={`/movie/${movie.id}`} className='absolute inset-0 z-10'>
+      <Link
+        href={`/movie/${movie.id}-${createSlug(movie.title)}`}
+        className='absolute inset-0 z-10'
+      >
         <span className='sr-only'>View {movie.title}</span>
       </Link>
       <div className='relative aspect-[2/3] overflow-hidden'>
@@ -70,24 +77,8 @@ export function MovieCard({ movie }: MovieCardProps) {
         <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 flex justify-between items-end'>
           <div className='flex items-center gap-1 text-white'>
             <Star className='h-4 w-4 fill-yellow-400 text-yellow-400' />
-            <span className='text-sm -medium'>{movie.vote_average}</span>
+            <span className='text-sm -medium'>{rating}</span>
           </div>
-          {/* <DropdownMenu>
-            <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
-              <Button
-                variant='ghost'
-                size='icon'
-                className='rounded-full bg-black/50 text-white hover:bg-black/70 h-8 w-8'
-              >
-                <Plus className='h-4 w-4' />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align='end'>
-              <DropdownMenuItem>Add to Watchlist</DropdownMenuItem>
-              <DropdownMenuItem>Add to Favorites</DropdownMenuItem>
-              <DropdownMenuItem>Add to Custom Playlist</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu> */}
         </div>
       </div>
       <CardContent className='p-3'>

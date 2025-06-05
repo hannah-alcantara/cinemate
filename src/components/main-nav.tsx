@@ -195,7 +195,7 @@ export function MainNav() {
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
               <Link href='/playlists' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(
@@ -208,7 +208,7 @@ export function MainNav() {
                   Playlists
                 </NavigationMenuLink>
               </Link>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
           </NavigationMenuList>
         </NavigationMenu>
 
