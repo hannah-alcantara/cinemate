@@ -5,8 +5,18 @@ import MovieGrid from "@/components/movie-grid";
 // import RecommendedMovies from "@/components/recommended-movies";
 // import { UserPlaylists } from "@/components/user-playlists";
 import { MovieCarousel } from "@/components/movie-carousel";
+import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.getUser();
+
+  // If user is logged in, redirect to private page
+  if (!error && data?.user) {
+    redirect("/profile");
+  }
+
   return (
     <div className='min-h-screen bg-background'>
       <MovieCarousel />
