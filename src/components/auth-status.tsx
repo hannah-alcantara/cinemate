@@ -70,59 +70,17 @@ export default function AuthStatus() {
   //   );
   // }
 
-  // if (!user) {
-  //   return (
-  //     <div className='flex items-center gap-2'>
-  //       <Link href='/auth/login'>
-  //         <Button variant='ghost' size='sm'>
-  //           Sign In
-  //         </Button>
-  //       </Link>
-  //       <Link href='/auth/signup'>
-  //         <Button size='sm'>Sign Up</Button>
-  //       </Link>
-  //     </div>
-  //   );
-  // }
+
   return (
-    <nav className='bg-white shadow-lg border-b'>
+    <nav className='shadow-lg border-b'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex justify-between items-center h-16'>
-          {/* Logo/Brand */}
-          <div className='flex items-center'>
-            <a
-              href={user ? "/private" : "/"}
-              className='text-xl font-bold text-gray-900'
-            >
-              Cinemate
-            </a>
-          </div>
 
           {/* Authenticated Navigation */}
           {user ? (
             <>
               {/* Navigation Links */}
               <div className='hidden md:block'>
-                <div className='ml-10 flex items-baseline space-x-4'>
-                  <a
-                    href='/private'
-                    className='text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium'
-                  >
-                    Dashboard
-                  </a>
-                  <a
-                    href='/movies'
-                    className='text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium'
-                  >
-                    Movies
-                  </a>
-                  <a
-                    href='/watchlist'
-                    className='text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium'
-                  >
-                    Watchlist
-                  </a>
-                </div>
               </div>
 
               {/* User Info & Logout */}
@@ -137,6 +95,7 @@ export default function AuthStatus() {
                     {user.email}
                   </span>
                 </div>
+
                 <button
                   onClick={handleLogout}
                   disabled={isLoggingOut}
@@ -148,25 +107,15 @@ export default function AuthStatus() {
             </>
           ) : (
             /* Non-authenticated Navigation */
-            <div className='flex items-center space-x-4'>
-              <a
-                href='/about'
-                className='text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium'
-              >
-                About
-              </a>
-              <a
-                href='/features'
-                className='text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium'
-              >
-                Features
-              </a>
-              <a
-                href='/login'
-                className='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors'
-              >
-                Login
-              </a>
+            <div className='flex items-center gap-2'>
+              <Link href='/auth/login'>
+                <Button variant='ghost' size='sm'>
+                  Sign In
+                </Button>
+              </Link>
+              <Link href='/auth/signup'>
+                <Button size='sm'>Sign Up</Button>
+              </Link>
             </div>
           )}
         </div>

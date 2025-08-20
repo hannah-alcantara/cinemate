@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Film, Home, ListVideo, Search, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import AuthStatus from "./auth-status";
+import { getMovieCategory } from "@/lib/movie-service";
 
 const category = [
   {
@@ -43,7 +44,71 @@ const category = [
 
 export function MainNav() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState([]);
+  const [showResults, setShowResults] = React.useState(false);
+  const [allMovies, setAllMovies] = React.useState([]);
+
+  // Fetch movies on component mount
+  React.useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const popularMovies = await getMovieCategory("popular");
+        // Limit to 20 movies
+        setAllMovies(popularMovies.results.slice(0, 20));
+      } catch (error) {
+        console.error("Failed to fetch movies:", error);
+      }
+    };
+    fetchMovies();
+  }, []);
+
+  const handleSearch = (query: string) => {
+    if (!query.trim()) {
+      setSearchResults([]);
+      setShowResults(false);
+      return;
+    }
+
+    // Filter local movies by title
+    const filteredMovies = allMovies.filter((movie: any) =>
+      movie.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setSearchResults(filteredMovies);
+    setShowResults(true);
+  };
+
+  const debouncedSearch = React.useCallback(
+    React.useMemo(
+      () => {
+        let timeoutId: NodeJS.Timeout;
+        return (query: string) => {
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(() => handleSearch(query), 300);
+        };
+      },
+      [allMovies]
+    ),
+    [allMovies]
+  );
+
+  React.useEffect(() => {
+    if (searchQuery) {
+      debouncedSearch(searchQuery);
+    } else {
+      setSearchResults([]);
+      setShowResults(false);
+    }
+  }, [searchQuery, debouncedSearch]);
+
+  const handleMovieSelect = (movieId: number) => {
+    router.push(`/movie/${movieId}`);
+    setSearchQuery("");
+    setShowResults(false);
+    setIsSearchOpen(false);
+  };
 
   return (
     <div className='fixed top-0 left-0 right-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
@@ -86,7 +151,34 @@ export function MainNav() {
                   type='search'
                   placeholder='Search movies...'
                   className='w-full bg-background pl-8'
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
+                {showResults && searchResults.length > 0 && (
+                  <div className='absolute top-full left-0 right-0 mt-1 bg-background border rounded-md shadow-lg max-h-60 overflow-y-auto z-50'>
+                    {searchResults.slice(0, 5).map((movie: any) => (
+                      <div
+                        key={movie.id}
+                        className='p-3 hover:bg-accent cursor-pointer flex items-center gap-3'
+                        onClick={() => handleMovieSelect(movie.id)}
+                      >
+                        {movie.poster_path && (
+                          <img
+                            src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
+                            alt={movie.title}
+                            className='w-8 h-12 object-cover rounded'
+                          />
+                        )}
+                        <div>
+                          <div className='font-medium text-sm'>{movie.title}</div>
+                          <div className='text-xs text-muted-foreground'>
+                            {movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A'}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
               <nav className='flex flex-col space-y-4'>
                 <Link
@@ -234,7 +326,34 @@ export function MainNav() {
                   "w-full bg-background pl-8",
                   isSearchOpen ? "block" : "hidden md:block"
                 )}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
+              {showResults && searchResults.length > 0 && (
+                <div className='absolute top-full left-0 right-0 mt-1 bg-background border rounded-md shadow-lg max-h-60 overflow-y-auto z-50'>
+                  {searchResults.slice(0, 5).map((movie: any) => (
+                    <div
+                      key={movie.id}
+                      className='p-3 hover:bg-accent cursor-pointer flex items-center gap-3'
+                      onClick={() => handleMovieSelect(movie.id)}
+                    >
+                      {movie.poster_path && (
+                        <img
+                          src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
+                          alt={movie.title}
+                          className='w-8 h-12 object-cover rounded'
+                        />
+                      )}
+                      <div>
+                        <div className='font-medium text-sm'>{movie.title}</div>
+                        <div className='text-xs text-muted-foreground'>
+                          {movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A'}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <Button

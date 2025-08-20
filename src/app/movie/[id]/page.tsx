@@ -57,7 +57,7 @@ export default async function MovieDetails({ params }: MovieDetailsProps) {
               {movie.genres.map((genre: { id: number; name: string }) => (
                 <span
                   key={genre.id}
-                  className='px-3 py-1 bg-primary/20 text-primary-foreground rounded-full text-sm'
+                  className='px-3 py-1 bg-white text-primary-foreground rounded-full text-sm'
                 >
                   {genre.name}
                 </span>

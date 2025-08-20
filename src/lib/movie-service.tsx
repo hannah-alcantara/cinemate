@@ -90,33 +90,68 @@ export const getMovieDetails = async (
 //   }
 // }
 
-const mockPlaylists: Playlist[] = [
-  {
-    id: "1",
-    name: "Weekend Favorites",
-    description: "My go-to movies for a relaxing weekend",
-    coverUrl: "/placeholder.svg?height=300&width=500",
-    movieCount: 5,
-    lastUpdated: "2 days ago",
-  },
-  {
-    id: "2",
-    name: "Sci-Fi Marathon",
-    description: "Best science fiction films of all time",
-    coverUrl: "/placeholder.svg?height=300&width=500",
-    movieCount: 8,
-    lastUpdated: "1 week ago",
-  },
-  {
-    id: "3",
-    name: "Award Winners",
-    description: "Oscar and Golden Globe winning films",
-    coverUrl: "/placeholder.svg?height=300&width=500",
-    movieCount: 12,
-    lastUpdated: "3 days ago",
-  },
-];
+// for movie search
+export async function searchMovies(query: string) {
+  if (!query.trim()) return { results: [] };
+  
+  const response = await fetch(
+    `${API_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to search movies");
+  }
+
+  return await response.json();
+}
 
 export async function getUserPlaylists(): Promise<Playlist[]> {
-  return mockPlaylists;
+  try {
+    const [popularMovies, topRatedMovies, upcomingMovies] = await Promise.all([
+      getMovieCategory("popular"),
+      getMovieCategory("top_rated"),
+      getMovieCategory("upcoming")
+    ]);
+
+    const playlists: Playlist[] = [
+      {
+        id: "1",
+        name: "Popular Now",
+        description: "Currently trending movies that everyone's talking about",
+        coverUrl: popularMovies.results[0]?.backdrop_path 
+          ? `https://image.tmdb.org/t/p/w500${popularMovies.results[0].backdrop_path}`
+          : "/placeholder.svg",
+        movieCount: popularMovies.results.length,
+        lastUpdated: "Today",
+        movies: popularMovies.results.slice(0, 20)
+      },
+      {
+        id: "2", 
+        name: "Top Rated Classics",
+        description: "Highest rated films of all time by critics and audiences",
+        coverUrl: topRatedMovies.results[0]?.backdrop_path
+          ? `https://image.tmdb.org/t/p/w500${topRatedMovies.results[0].backdrop_path}`
+          : "/placeholder.svg",
+        movieCount: topRatedMovies.results.length,
+        lastUpdated: "Yesterday",
+        movies: topRatedMovies.results.slice(0, 20)
+      },
+      {
+        id: "3",
+        name: "Coming Soon",
+        description: "Upcoming releases to look forward to",
+        coverUrl: upcomingMovies.results[0]?.backdrop_path
+          ? `https://image.tmdb.org/t/p/w500${upcomingMovies.results[0].backdrop_path}`
+          : "/placeholder.svg", 
+        movieCount: upcomingMovies.results.length,
+        lastUpdated: "2 hours ago",
+        movies: upcomingMovies.results.slice(0, 20)
+      }
+    ];
+
+    return playlists;
+  } catch (error) {
+    console.error("Failed to fetch movie playlists:", error);
+    return [];
+  }
 }
