@@ -1,6 +1,5 @@
 "use client";
 
-import { signup as signupAction } from "@/app/auth/signup/actions";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -18,10 +17,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/utils/supabase/client";
 
 export function SignupForm() {
   const [serverError, setServerError] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const router = useRouter();
+  const supabase = createClient();
 
   const {
     register,
@@ -40,12 +43,22 @@ export function SignupForm() {
   const onSubmit = async (data: SignupFormValues) => {
     setServerError(null);
 
-    const result = await signupAction(data);
+    try {
+      const { error } = await supabase.auth.signUp({
+        email: data.email,
+        password: data.password,
+        options: {
+          data: { name: data.name },
+        },
+      });
 
-    if (result.success) {
-      setSuccessMessage(result.message ?? "Registration successful!");
-    } else {
-      setServerError(result.error ?? "An error occurred during registration");
+      if (error) {
+        setServerError(error.message);
+      } else {
+        router.push("/home");
+      }
+    } catch (err) {
+      setServerError("An unexpected error occurred during registration");
     }
   };
 

@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Film, Home, ListVideo, Search, User } from "lucide-react";
+import { Film, Home, ListVideo, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -127,18 +127,6 @@ export function MainNav() {
                 >
                   <ListVideo className='h-5 w-5' />
                   Playlists
-                </Link>
-                <Link
-                  href='/profile'
-                  className={cn(
-                    "flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary",
-                    pathname === "/profile"
-                      ? "text-primary"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  <User className='h-5 w-5' />
-                  Profile
                 </Link>
               </nav>
             </div>

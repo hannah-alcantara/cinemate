@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -14,10 +15,38 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { login } from "@/app/auth/login/actions";
+import { createClient } from "@/utils/supabase/client";
 
 export default function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+  const supabase = createClient();
+
+  const handleLogin = async (formData: FormData) => {
+    setIsLoading(true);
+    setError(null);
+
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (error) {
+        setError(error.message);
+      } else {
+        router.push("/home");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Card className='w-full max-w-md mx-auto'>
@@ -37,7 +66,12 @@ export default function LoginForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form className='space-y-6'>
+        {error && (
+          <div className='mb-4 p-4 bg-neutral-700 bg-opacity-75 text-sm border-l-4 border-red-600'>
+            {error}
+          </div>
+        )}
+        <form action={handleLogin} className='space-y-6'>
           <div className='space-y-2'>
             <Label htmlFor='email'>Email</Label>
             <Input
@@ -70,7 +104,6 @@ export default function LoginForm() {
             type='submit'
             className='w-full'
             disabled={isLoading}
-            formAction={login}
           >
             {isLoading ? "Signing in..." : "Sign in"}
           </Button>
