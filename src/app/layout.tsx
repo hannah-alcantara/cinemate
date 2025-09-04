@@ -6,6 +6,7 @@ import "./globals.css";
 import { MainNav } from "../components/main-nav";
 import { ThemeProvider } from "../components/theme-provider";
 import { FavoritesProvider } from "../contexts/favorites-context";
+import { Toaster } from "@/components/ui/sonner";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -34,6 +35,7 @@ export default function RootLayout({
           <FavoritesProvider>
             <MainNav />
             <div className='pt-16'>{children}</div>
+            <Toaster />
           </FavoritesProvider>
         </ThemeProvider>
       </body>
