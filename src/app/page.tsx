@@ -2,12 +2,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import MovieGrid from "@/components/movie-grid";
-// import RecommendedMovies from "@/components/recommended-movies";
-// import { UserPlaylists } from "@/components/user-playlists";
 import { MovieCarousel } from "@/components/movie-carousel";
 
 export default async function Home() {
-
   return (
     <div className='min-h-screen bg-background'>
       <MovieCarousel />
@@ -20,11 +17,6 @@ export default async function Home() {
             <p className='text-muted-foreground'>
               Find your next favorite film
             </p>
-          </div>
-          <div>
-            <Link href='/favorites'>
-              <Button variant='outline'>My Favorites</Button>
-            </Link>
           </div>
         </div>
 
@@ -44,16 +36,6 @@ export default async function Home() {
             <MovieGrid category='top_rated' />
           </TabsContent>
         </Tabs>
-
-        {/* <div className='py-8'>
-          <h2 className='text-2xl font-bold mb-6'>Recommended For You</h2>
-          <RecommendedMovies category='popular' />
-        </div> */}
-
-        {/* <div className='py-8'>
-          <h2 className='text-2xl font-bold mb-6'>Your Playlists</h2>
-          <UserPlaylists />
-        </div> */}
       </section>
     </div>
   );

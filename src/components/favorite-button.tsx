@@ -30,6 +30,8 @@ export function FavoriteButton({
     e.preventDefault(); // Prevent navigation if button is inside a link
     e.stopPropagation();
     
+    if (isLoading) return;
+    
     setIsLoading(true);
     
     try {

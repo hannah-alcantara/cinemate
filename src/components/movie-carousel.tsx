@@ -112,17 +112,7 @@ export function MovieCarousel() {
                   <Button size='lg' className='gap-2' asChild>
                     <Link href={`/movie/${movie.id}`}>View Details</Link>
                   </Button>
-                  <Button size='lg' variant='secondary'>
-                    Add to Playlist
-                  </Button>
                 </div>
-                {/* <div className="flex gap-3 text-white/80 text-sm">
-                  {movie.genres.map((genre) => (
-                    <span key={genre}>{genre}</span>
-                  ))}
-                  <span>•</span>
-                  <span>{movie.duration}</span>
-                </div> */}
               </div>
             </div>
           </div>

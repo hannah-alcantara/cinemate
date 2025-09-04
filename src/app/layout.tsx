@@ -32,10 +32,8 @@ export default function RootLayout({
       <body className={`${oswald.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute='class' defaultTheme='dark'>
           <FavoritesProvider>
-            {/* <MoodFilterProvider> */}
             <MainNav />
             <div className='pt-16'>{children}</div>
-            {/* </MoodFilterProvider> */}
           </FavoritesProvider>
         </ThemeProvider>
       </body>

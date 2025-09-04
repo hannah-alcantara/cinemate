@@ -93,9 +93,6 @@ export function FavoritesProvider({ children }: FavoritesProviderProps) {
           setFavorites(prev => [favoriteMovie, ...prev]);
           setFavoriteIds(prev => new Set(prev).add(movie.id));
         }
-
-        // Refresh to get the actual data from the database
-        setTimeout(() => refreshFavorites(), 100);
       }
       return success;
     } catch (error) {
