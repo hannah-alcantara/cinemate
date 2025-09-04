@@ -109,8 +109,8 @@ export default function AuthStatus() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href='/playlists'>
-            <span>My Playlists</span>
+          <Link href='/favorites'>
+            <span>My Favorites</span>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />

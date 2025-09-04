@@ -22,8 +22,8 @@ export default async function Home() {
             </p>
           </div>
           <div>
-            <Link href='/playlists'>
-              <Button variant='outline'>My Playlists</Button>
+            <Link href='/favorites'>
+              <Button variant='outline'>My Favorites</Button>
             </Link>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getMovieDetails } from "@/lib/movie-service";
 import { Button } from "@/components/ui/button";
+import { FavoriteButton } from "@/components/favorite-button";
 import { Heart, Play, Plus, Star } from "lucide-react";
 import { notFound } from "next/navigation";
 
@@ -76,9 +77,12 @@ export default async function MovieDetails({ params }: MovieDetailsProps) {
               <Button size='lg' variant='secondary' className='gap-2'>
                 <Plus className='w-5 h-5' /> Add to Playlist
               </Button> */}
-              <Button size='lg' variant='outline' className='gap-2'>
-                <Heart className='w-5 h-5' /> Add to Favorites
-              </Button>
+              <FavoriteButton
+                movie={movie}
+                size='lg'
+                variant='outline'
+                className='gap-2'
+              />
             </div>
           </div>
         </div>

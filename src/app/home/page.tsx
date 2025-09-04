@@ -7,7 +7,6 @@ import MovieGrid from "@/components/movie-grid";
 import { MovieCarousel } from "@/components/movie-carousel";
 
 export default async function Home() {
-
   return (
     <div className='min-h-screen bg-background'>
       <MovieCarousel />
@@ -22,8 +21,8 @@ export default async function Home() {
             </p>
           </div>
           <div>
-            <Link href='/playlists'>
-              <Button variant='outline'>My Playlists</Button>
+            <Link href='/favorites'>
+              <Button variant='outline'>My Favorites</Button>
             </Link>
           </div>
         </div>

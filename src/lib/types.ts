@@ -23,6 +23,17 @@ export interface Playlist {
   movies?: Movie[];
 }
 
+export interface FavoriteMovie {
+  id: string;
+  user_id: string;
+  movie_id: string;
+  movie_title: string;
+  movie_poster_path: string | null;
+  movie_release_date: string;
+  movie_vote_average: number;
+  added_at: string;
+}
+
 //fix: remove later
 export interface User {
   id: string;

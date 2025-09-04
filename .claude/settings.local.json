@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/C:\\Users\\Hannah\\Documents\\cinemate/**)",
+      "Read(/C:\\Users\\Hannah\\Documents\\cinemate\\src\\app\\home/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

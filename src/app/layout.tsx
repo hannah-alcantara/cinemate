@@ -5,6 +5,7 @@ import { Oswald, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { MainNav } from "../components/main-nav";
 import { ThemeProvider } from "../components/theme-provider";
+import { FavoritesProvider } from "../contexts/favorites-context";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -30,10 +31,12 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <body className={`${oswald.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute='class' defaultTheme='dark'>
-          {/* <MoodFilterProvider> */}
-          <MainNav />
-          <div className='pt-16'>{children}</div>
-          {/* </MoodFilterProvider> */}
+          <FavoritesProvider>
+            {/* <MoodFilterProvider> */}
+            <MainNav />
+            <div className='pt-16'>{children}</div>
+            {/* </MoodFilterProvider> */}
+          </FavoritesProvider>
         </ThemeProvider>
       </body>
     </html>

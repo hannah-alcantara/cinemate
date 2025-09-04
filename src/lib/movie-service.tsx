@@ -1,4 +1,10 @@
-import type { Playlist, MovieWithCredits } from "@/lib/types";
+import type {
+  Playlist,
+  MovieWithCredits,
+  FavoriteMovie,
+  Movie,
+} from "@/lib/types";
+import { createClient } from "@/utils/supabase/client";
 
 const API_URL = "https://api.themoviedb.org/3";
 const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -76,47 +82,103 @@ export const getMovieDetails = async (
   }
 };
 
-//FIX: needs user viewing history data from database
-// export async function getRecommendedMovies(movieId: number) {
-//   try {
-//     const response = await fetch(
-//       `${API_URL}/movie/${movieId}/recommendations?api_key=${API_KEY}`
-//     );
-//     const data = await response.json();
-//     return data.results;
-//   } catch (error) {
-//     console.error("Error fetching recommendations:", error);
-//     return [];
-//   }
-// }
+// Favorites functionality
+export async function getFavoriteMovies(): Promise<FavoriteMovie[]> {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-const mockPlaylists: Playlist[] = [
-  {
-    id: "1",
-    name: "Weekend Favorites",
-    description: "My go-to movies for a relaxing weekend",
-    coverUrl: "/placeholder.svg?height=300&width=500",
-    movieCount: 5,
-    lastUpdated: "2 days ago",
-  },
-  {
-    id: "2",
-    name: "Sci-Fi Marathon",
-    description: "Best science fiction films of all time",
-    coverUrl: "/placeholder.svg?height=300&width=500",
-    movieCount: 8,
-    lastUpdated: "1 week ago",
-  },
-  {
-    id: "3",
-    name: "Award Winners",
-    description: "Oscar and Golden Globe winning films",
-    coverUrl: "/placeholder.svg?height=300&width=500",
-    movieCount: 12,
-    lastUpdated: "3 days ago",
-  },
-];
+  if (!user) {
+    return [];
+  }
 
-export async function getUserPlaylists(): Promise<Playlist[]> {
-  return mockPlaylists;
+  const { data, error } = await supabase
+    .from("favorite_movies")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("added_at", { ascending: false });
+
+  if (error) {
+    console.error("Error fetching favorites:", error);
+    return [];
+  }
+
+  return data || [];
+}
+
+export async function addToFavorites(movie: Movie): Promise<boolean> {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return false;
+  }
+
+  const { error } = await supabase.from("favorite_movies").insert({
+    user_id: user.id,
+    movie_id: movie.id,
+    movie_title: movie.title,
+    movie_poster_path: movie.poster_path,
+    movie_release_date: movie.release_date,
+    movie_vote_average: movie.vote_average,
+    added_at: new Date().toISOString(),
+  });
+
+  if (error) {
+    console.error("Error adding to favorites:", error);
+    return false;
+  }
+
+  return true;
+}
+
+export async function removeFromFavorites(movieId: string): Promise<boolean> {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return false;
+  }
+
+  const { error } = await supabase
+    .from("favorite_movies")
+    .delete()
+    .eq("user_id", user.id)
+    .eq("movie_id", movieId);
+
+  if (error) {
+    console.error("Error removing from favorites:", error);
+    return false;
+  }
+
+  return true;
+}
+
+export async function isMovieFavorite(movieId: string): Promise<boolean> {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return false;
+  }
+
+  const { data, error } = await supabase
+    .from("favorite_movies")
+    .select("id")
+    .eq("user_id", user.id)
+    .eq("movie_id", movieId)
+    .single();
+
+  if (error) {
+    return false;
+  }
+
+  return !!data;
 }

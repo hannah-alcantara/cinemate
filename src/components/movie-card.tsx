@@ -2,20 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Heart, Star } from "lucide-react";
-//Plus,
-import { Button } from "@/components/ui/button";
+import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { FavoriteButton } from "@/components/favorite-button";
 import type { Movie } from "@/lib/types";
-import { useState } from "react";
 
 interface MovieCardProps {
   movie: Movie;
 }
 
 export function MovieCard({ movie }: MovieCardProps) {
-  const [isFavorite, setIsFavorite] = useState(false);
-
   // Transform release_date to year
   const year = movie.release_date
     ? new Date(movie.release_date).getFullYear().toString()
@@ -49,29 +45,18 @@ export function MovieCard({ movie }: MovieCardProps) {
         <Image
           src={posterUrl}
           alt={movie.title}
-          // fill
           width={500}
           height={750}
           className='object-cover transition-transform group-hover:scale-105'
         />
 
         <div className='absolute top-2 right-2 z-20'>
-          <Button
+          <FavoriteButton
+            movie={movie}
             variant='ghost'
             size='icon'
             className='rounded-full bg-black/50 text-white hover:bg-black/70'
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setIsFavorite(!isFavorite);
-            }}
-          >
-            <Heart
-              className={`h-4 w-4 ${
-                isFavorite ? "fill-red-500 text-red-500" : ""
-              }`}
-            />
-          </Button>
+          />
         </div>
 
         <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 flex justify-between items-end'>

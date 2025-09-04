@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Film, Home, ListVideo, Search } from "lucide-react";
+import { Film, Home, Heart, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
@@ -117,16 +117,16 @@ export function MainNav() {
                   </div>
                 </div>
                 <Link
-                  href='/playlists'
+                  href='/favorites'
                   className={cn(
                     "flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary",
-                    pathname === "/playlists"
+                    pathname === "/favorites"
                       ? "text-primary"
                       : "text-muted-foreground"
                   )}
                 >
-                  <ListVideo className='h-5 w-5' />
-                  Playlists
+                  <Heart className='h-5 w-5' />
+                  Favorites
                 </Link>
               </nav>
             </div>
@@ -184,16 +184,16 @@ export function MainNav() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             {/* <NavigationMenuItem>
-              <Link href='/playlists' legacyBehavior passHref>
+              <Link href='/favorites' legacyBehavior passHref>
                 <NavigationMenuLink
                   className={cn(
                     "group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50",
-                    pathname === "/playlists"
+                    pathname === "/favorites"
                       ? "bg-accent text-accent-foreground"
                       : "text-foreground"
                   )}
                 >
-                  Playlists
+                  Favorites
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem> */}
