@@ -22,7 +22,7 @@ import { createClient } from "@/utils/supabase/client";
 
 export function SignupForm() {
   const [serverError, setServerError] = useState<string | null>(null);
-  const [,] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const router = useRouter();
   const supabase = createClient();
 
@@ -42,6 +42,7 @@ export function SignupForm() {
 
   const onSubmit = async (data: SignupFormValues) => {
     setServerError(null);
+    setSuccessMessage(null);
 
     try {
       const { error } = await supabase.auth.signUp({
@@ -55,6 +56,7 @@ export function SignupForm() {
       if (error) {
         setServerError(error.message);
       } else {
+        setSuccessMessage("Account created successfully! Redirecting...");
         router.push("/home");
       }
     } catch {

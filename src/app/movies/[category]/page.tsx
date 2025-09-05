@@ -4,24 +4,26 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import MovieGrid from "@/components/movie-grid";
 
+type ValidCategory = 'now_playing' | 'popular' | 'top_rated' | 'upcoming';
+
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     category: string;
-  };
+  }>;
 }
 
-export default function CategoryPage({ params }: CategoryPageProps) {
-  const category = params.category;
+export default async function CategoryPage({ params }: CategoryPageProps) {
+  const { category } = await params;
 
   // Map URL slug to display name
-  const categoryDisplayNames: Record<string, string> = {
+  const categoryDisplayNames: Record<ValidCategory, string> = {
     now_playing: "Now Playing",
     popular: "Popular",
     top_rated: "Top Rated",
     upcoming: "Upcoming",
   };
 
-  const displayName = categoryDisplayNames[category];
+  const displayName = categoryDisplayNames[category as ValidCategory];
 
   if (!displayName) {
     notFound();
