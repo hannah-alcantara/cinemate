@@ -22,7 +22,7 @@ import { createClient } from "@/utils/supabase/client";
 
 export function SignupForm() {
   const [serverError, setServerError] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [,] = useState<string | null>(null);
   const router = useRouter();
   const supabase = createClient();
 
@@ -57,7 +57,7 @@ export function SignupForm() {
       } else {
         router.push("/home");
       }
-    } catch (err) {
+    } catch {
       setServerError("An unexpected error occurred during registration");
     }
   };

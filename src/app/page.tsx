@@ -1,5 +1,3 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import MovieGrid from "@/components/movie-grid";
 import { MovieCarousel } from "@/components/movie-carousel";

@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { getMovieDetails } from "@/lib/movie-service";
-import { Button } from "@/components/ui/button";
 import { FavoriteButton } from "@/components/favorite-button";
-import { Heart, Play, Plus, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { notFound } from "next/navigation";
 
 interface MovieDetailsProps {
@@ -71,12 +70,6 @@ export default async function MovieDetails({ params }: MovieDetailsProps) {
               </p>
             )}
             <div className='flex flex-wrap gap-3'>
-              {/* <Button size='lg' className='gap-2'>
-                <Play className='w-5 h-5' /> Watch Trailer
-              </Button>
-              <Button size='lg' variant='secondary' className='gap-2'>
-                <Plus className='w-5 h-5' /> Add to Playlist
-              </Button> */}
               <FavoriteButton
                 movie={movie}
                 size='lg'
@@ -132,13 +125,6 @@ export default async function MovieDetails({ params }: MovieDetailsProps) {
                   className='w-full object-cover'
                 />
               </div>
-
-              {/* <div className='space-y-3'>
-                <Button className='w-full'>Watch Now</Button>
-                <Button variant='outline' className='w-full'>
-                  Add to Watchlist
-                </Button>
-              </div> */}
             </div>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import type {
-  Playlist,
   MovieWithCredits,
   FavoriteMovie,
   Movie,
@@ -66,7 +65,7 @@ export const getMovieDetails = async (
 
     // Extract director and cast from movieCredits response
     const director = movieCredits.crew.find(
-      (member: any) => member.job === "Director"
+      (member: { job: string }) => member.job === "Director"
     );
     const cast = movieCredits.cast.slice(0, 5); // Limit to the first 5 cast members
 

@@ -1,5 +1,4 @@
 import { FavoriteMovies } from "@/components/favorite-movies";
-import { Heart } from "lucide-react";
 
 export default function FavoritesPage() {
   return (

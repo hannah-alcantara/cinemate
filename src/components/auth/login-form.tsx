@@ -41,7 +41,7 @@ export default function LoginForm() {
       } else {
         router.push("/home");
       }
-    } catch (err) {
+    } catch {
       setError("An unexpected error occurred");
     } finally {
       setIsLoading(false);
@@ -100,11 +100,7 @@ export default function LoginForm() {
               required
             />
           </div>
-          <Button
-            type='submit'
-            className='w-full'
-            disabled={isLoading}
-          >
+          <Button type='submit' className='w-full' disabled={isLoading}>
             {isLoading ? "Signing in..." : "Sign in"}
           </Button>
         </form>
