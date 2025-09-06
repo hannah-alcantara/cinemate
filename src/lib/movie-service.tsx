@@ -181,3 +181,25 @@ export async function isMovieFavorite(movieId: string): Promise<boolean> {
 
   return !!data;
 }
+
+// Search functionality
+export async function searchMovies(query: string, page: number = 1) {
+  if (!query.trim()) {
+    return { results: [], total_results: 0, total_pages: 0 };
+  }
+
+  const endpoint = `${API_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=${page}`;
+
+  try {
+    const response = await fetch(endpoint);
+
+    if (!response.ok) {
+      throw new Error("Failed to search movies");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error searching movies:", error);
+    throw error;
+  }
+}

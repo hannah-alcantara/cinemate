@@ -3,7 +3,9 @@
     "allow": [
       "Read(/C:\\Users\\Hannah\\Documents\\cinemate/**)",
       "Read(/C:\\Users\\Hannah\\Documents\\cinemate\\src\\app\\home/**)",
-      "Read(/C:\\Users\\Hannah\\Documents\\cinemate\\src\\components/**)"
+      "Read(/C:\\Users\\Hannah\\Documents\\cinemate\\src\\components/**)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

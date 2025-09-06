@@ -13,10 +13,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import AuthStatus from "./auth-status";
+import { SearchBox } from "./search-box";
 
 const category = [
   {
@@ -80,14 +80,7 @@ export function MainNav() {
                 <Film className='h-6 w-6' />
                 <span className='font-oswald'>CINEMATE</span>
               </Link>
-              <div className='relative'>
-                <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />
-                <Input
-                  type='search'
-                  placeholder='Search movies...'
-                  className='w-full bg-background pl-8'
-                />
-              </div>
+              <SearchBox className='w-full' />
               <nav className='flex flex-col space-y-4'>
                 <Link
                   href='/'
@@ -202,29 +195,13 @@ export function MainNav() {
 
         {/* Search and User Profile */}
         <div className='ml-auto flex items-center gap-4'>
-          <div
+          <SearchBox 
             className={cn(
-              "relative",
-              isSearchOpen ? "w-full md:w-64" : "w-0 md:w-64"
+              "transition-all duration-300 ease-in-out",
+              isSearchOpen ? "w-full md:w-64 opacity-100" : "w-0 md:w-64 opacity-0 md:opacity-100"
             )}
-          >
-            <div
-              className={cn(
-                "transition-all duration-300 ease-in-out",
-                isSearchOpen ? "opacity-100" : "opacity-0 md:opacity-100"
-              )}
-            >
-              <Search className='absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground' />
-              <Input
-                type='search'
-                placeholder='Search movies...'
-                className={cn(
-                  "w-full bg-background pl-8",
-                  isSearchOpen ? "block" : "hidden md:block"
-                )}
-              />
-            </div>
-          </div>
+            showOnMobile={isSearchOpen}
+          />
           <Button
             variant='ghost'
             size='icon'
