@@ -1,8 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cinemate 🎬
+
+A modern movie discovery and favorites tracking application built with Next.js 15 and React 18.
+
+## Features
+
+- **Movie Discovery**: Browse movies by categories (Now Playing, Popular, Top Rated)
+- **Movie Carousel**: Featured movies showcase on the homepage
+- **Favorites System**: Save and manage your favorite movies
+- **Search Functionality**: Find movies quickly with the search feature
+- **Dark/Light Theme**: Toggle between dark and light modes
+- **Responsive Design**: Optimized for desktop and mobile devices
+- **Authentication**: User authentication system with Supabase
+- **Modern UI**: Built with Radix UI components and Tailwind CSS
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Frontend**: React 18, TypeScript
+- **Styling**: Tailwind CSS, Radix UI
+- **Authentication**: Supabase
+- **Forms**: React Hook Form with Zod validation
+- **Icons**: Lucide React
+- **Theming**: next-themes
+- **Notifications**: Sonner
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone <repository-url>
+cd cinemate
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+3. Set up environment variables:
+   Create a `.env.local` file in the root directory and add your Supabase credentials:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
@@ -14,23 +70,61 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build the application for production
+- `npm start` - Start the production server
+- `npm run lint` - Run ESLint for code linting
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── auth/              # Authentication pages
+│   ├── favorites/         # Favorites page
+│   ├── home/              # Home page components
+│   ├── movie/             # Individual movie pages
+│   ├── movies/            # Movies listing pages
+│   └── pages/             # Additional pages
+├── components/            # Reusable UI components
+│   ├── auth/              # Authentication components
+│   ├── ui/                # Base UI components (Radix UI)
+│   ├── movie-card.tsx     # Movie card component
+│   ├── movie-carousel.tsx # Featured movies carousel
+│   ├── movie-grid.tsx     # Movies grid layout
+│   ├── search-box.tsx     # Search functionality
+│   └── ...
+├── contexts/              # React contexts
+├── lib/                   # Utility libraries and configurations
+├── utils/                 # Helper functions
+└── middleware.ts          # Next.js middleware
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **MovieCarousel**: Displays featured movies in a carousel format
+- **MovieGrid**: Shows movies in a grid layout with pagination
+- **MovieCard**: Individual movie display component with favorite functionality
+- **SearchBox**: Movie search functionality
+- **FavoriteButton**: Add/remove movies from favorites
+- **MainNav**: Navigation bar with theme toggle and user menu
 
-## Deploy on Vercel
+<!-- ## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+This project is private and not licensed for public use.
+
+## Support
+
+For support, please contact the development team or create an issue in the repository. -->
